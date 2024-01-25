@@ -57,4 +57,3 @@ jobs:
           mkdir -p .kube && \
           echo "${{ env.KUBERNETES_CLUSTER_CONFIG }}" > .kube/config && \
           helm upgrade --install wiki ./k8s/helm -n wiki --create-namespace -f k8s/helm/values.yaml
-

@@ -1,15 +1,17 @@
-apiVersion: v1
 kind: Service
+apiVersion: v1
 metadata:
-  name: {{ include "public-wiki.fullname" . }}
+  name: public-wiki
   labels:
-    {{- include "public-wiki.labels" . | nindent 4 }}
+    app: public-wiki
+  annotations:
+    app: public-wiki
 spec:
-  type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
+    - name: http
       protocol: TCP
-      name: http
+      port: 3000
+      targetPort: 3000
   selector:
-    {{- include "public-wiki.selectorLabels" . | nindent 4 }}
+    app: public-wiki
+  type: ClusterIP

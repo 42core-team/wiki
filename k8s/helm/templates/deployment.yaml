@@ -53,7 +53,7 @@ spec:
             periodSeconds: 10
             successThreshold: 1
             failureThreshold: 6
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
       restartPolicy: Always
   strategy:
     type: RollingUpdate

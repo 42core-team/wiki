@@ -29,16 +29,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Set TAG ENV
-        run: echo "TAG_NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/core-public-wiki:$TAG_NAME
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/core-public-wiki:${{ github.ref_name }}
 
       - name: Install helm
         run: |
@@ -56,4 +53,4 @@ jobs:
         run: |
           mkdir -p .kube && \
           echo "${{ env.KUBERNETES_CLUSTER_CONFIG }}" > .kube/config && \
-          helm upgrade --install wiki ./k8s/helm -n wiki --create-namespace -f k8s/helm/values.yaml --set image.tag=${{ env.TAG_NAME }}
+          helm upgrade --install wiki ./k8s/helm -n wiki --create-namespace -f k8s/helm/values.yaml --set image.tag=${{ github.ref_name }}

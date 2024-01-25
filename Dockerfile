@@ -1,10 +1,4 @@
-FROM node:latest
+FROM nginx:latest
 LABEL description="CORE public wiki"
-
-WORKDIR /docs
-
-COPY ./docs /docs
-
-RUN npm install -g docsify-cli@latest
-EXPOSE 3000/tcp
-ENTRYPOINT docsify serve .
+COPY ./docs /usr/share/nginx/html
+EXPOSE 80/tcp

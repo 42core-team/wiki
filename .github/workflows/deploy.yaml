@@ -35,4 +35,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/core/public-wiki:init
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/core-public-wiki:init

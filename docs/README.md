@@ -1,7 +1,5 @@
 # Home
 
-> An awesome project.
+## This is the official CORE documentation
 
-```txt
-Test
-```
+> coming soon

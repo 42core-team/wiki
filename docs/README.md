@@ -26,5 +26,5 @@ After you got all that you can either follow the step-by-step guide in [text-for
 Head to the [standard library function docs](./standard-library/README.md)
 
 ## Q and A
-You find the Q and A here [Q AND A](./qanda.md)
+You find the FAQ here [FAQ](./faq.md)
 

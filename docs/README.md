@@ -7,10 +7,11 @@ To get started to write your own CORE bot you will have to do the following:
 - Be a registered CORE participant/team ([How?](Get a CORE participant))
 - Have received an invite link to your CORE repository on GitHub (You will get that once you are a registered CORE participant and the event is about to start)
 
-After you got all that you can either follow the step-by-step guide in [text-form](#### Text Guide) or you watch the [video guide](##### Video Guide)
+After you got all that you can either follow the step-by-step guide in [text-form](#text-guide) or you watch the [video guide](#video-guide)
 
 ##### Video Guide
-![core quickstart video](../../assets/video/quickstart-uncut.mp4)
+[![Video Guide](./docs/favicon.ico)](assets/videos/quickstart-uncut.mp4 "Click to Watch the Video")
+> available soon
 ##### Text Guide
 1. Fork your CORE-Repository on GitHub
 2. Clone it and open it in preferably [Visual Studio Code](https://code.visualstudio.com/)
@@ -25,5 +26,5 @@ After you got all that you can either follow the step-by-step guide in [text-for
 Head to the [standard library function docs](./standard-library/README.md)
 
 ## Q and A
-You find the Q and A here [Q AND A](./qanda/README.md)
+You find the Q and A here [Q AND A](./qanda.md)
 

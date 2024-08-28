@@ -22,7 +22,7 @@ After you got all that you can either follow the step-by-step guide in [text-for
 8. Once you are inside the Container Developing Area head to the `src/` folder and start coding 😎
 
 ## Standard Library
-Head to the [standard library function docs](./docs/standard-library/README.md)
+Head to the [standard library function docs](./standard-library/README.md)
 
 ## Q and A
 You find the Q and A here [Q AND A](./qanda/README.md)

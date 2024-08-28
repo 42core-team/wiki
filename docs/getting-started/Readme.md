@@ -1,2 +1,2 @@
 # Getting started
-![quick start test video](../../assets/quickstart-uncut.mp4)
+![quick start test video](quickstart-uncut.mp4)

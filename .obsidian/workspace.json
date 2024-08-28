@@ -1,0 +1,163 @@
+{
+  "main": {
+    "id": "d706535b2ead3e4b",
+    "type": "split",
+    "children": [
+      {
+        "id": "1a5812412deafa72",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1d00fa8fe3495d3b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d8f3130d6af18b0d",
+    "type": "split",
+    "children": [
+      {
+        "id": "e5826dd077797545",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6bf451b4fbcb5d47",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d42a46ca9fab67fb",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "560cd121ee68e5b6",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b8550f806e1bdb1c",
+    "type": "split",
+    "children": [
+      {
+        "id": "2583fc632c4cb0cb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e6c5c0a86240d357",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5cb96d72156db212",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "0b041e6d18d529e6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "3612c811b4a09477",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/README.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "1d00fa8fe3495d3b",
+  "lastOpenFiles": [
+    "docs/qanda/README.md",
+    "docs/standard-library/README.md",
+    "docs/qanda",
+    "docs/README.md",
+    "docs/standard-library/User Loop.md",
+    "docs/standard-library",
+    "docs/getting-started/Get a CORE participant.md",
+    "docs/getting-started/Readme.md",
+    "assets/images",
+    "assets/videos",
+    "assets/videos/quickstart-uncut.mp4"
+  ]
+}

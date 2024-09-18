@@ -1,7 +1,5 @@
-# 🏠 Home
+# 🏠 The Art of CORE
 ## Welcome to the Official CORE Documentation 📚
-
----
 
 # 🚀 Getting Started with Your Own CORE Bot
 
@@ -125,9 +123,8 @@ void ft_user_loop()
 }
 ```
 
-# 📚 Standard Library
-Head over to the [Standard Library function docs](./standard-library/README.md) for more details.
+# [📚 Standard Library](./standard-library/README.md)
 
-# ❓ FAQ
-You find the FAQ here [FAQ](./faq.md)
+
+# [❓ FAQ](./faq.md)
 

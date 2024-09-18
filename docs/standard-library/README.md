@@ -1,5 +1,8 @@
 # 📚 Standard Library
 
+<!-- Tab Content -->
+<div id="Functions" class="tabcontent"></div>
+
 ## 🛠 Functions Overview
 
 ### ⚙️ `void ft_init_con(char *team_name, int *argc, char **argv);`
@@ -193,8 +196,11 @@ Prints the current game configuration, including game dimensions, income, core h
 ### 📜 `void ft_print_all();`
 Prints all available game information, including the game configuration, status, teams, cores, resources, and units.
 
+<br>
 
-# 📊 Data Types
+<div id="DataTypes" class="tabcontent"></div>
+
+## 📊 Data Types
 
 Here you'll find the main data types and structures used in the game logic. These are essential for understanding how to interact with game elements, control units, and manage actions.
 
@@ -213,6 +219,8 @@ typedef enum e_status
 } t_status;
 ```
 
+---
+
 ### 🏅 `typedef struct s_team`
 Represents a team in the game.
 
@@ -227,6 +235,8 @@ typedef struct s_team
 *Good to know:*
 - Balance is crucial for determining whether you can create new units or take certain actions. (Or just spam spawn the units but keep in mind that it's better having a logic behind buying units)
 
+---
+
 ### 🔗 `typedef enum e_obj_type`
 Represents the types of objects in the game.
 
@@ -238,6 +248,8 @@ typedef enum e_obj_type
 	OBJ_RESOURCE                 // A resource (e.g., minerals)
 } t_obj_type;
 ```
+
+---
 
 ### 🧩 `typedef struct s_obj`
 Represents an object in the game, which could be a unit, core, or resource.
@@ -268,6 +280,8 @@ typedef struct s_obj
 - Units can either be workers or warriors and have specific stats like HP and position.
 - Resources are critical for a team’s economic strength.
 
+---
+
 ### ⚔️ `typedef enum e_unit_type`
 Defines the different types of units.
 
@@ -281,6 +295,8 @@ typedef enum e_unit_type
 
 *Good to know:*
 - Warriors deal damage, while workers gather resources or perform other tasks to support the team.
+
+---
 
 ### 🛠️ `typedef struct s_unit_config`
 Defines the configuration for units, including their stats and abilities.
@@ -304,6 +320,8 @@ typedef struct s_unit_config
 *Good to know:*
 - Units have specialized roles: some are better for attacking cores, while others excel at resource gathering or unit combat.
 
+---
+
 ### 🏴‍☠️ `typedef struct s_team_config`
 Defines the configuration of a team, including its ID and name.
 
@@ -314,6 +332,8 @@ typedef struct s_team_config
 	char *name;                 // Name of the team
 } t_team_config;
 ```
+
+---
 
 ### 🌾 `typedef struct s_resource_config`
 Defines the configuration for resources, including their health and value.
@@ -329,6 +349,8 @@ typedef struct s_resource_config
 
 *Good to know:*
 - Resources are vital for team economy, and their balance_value increases the team’s resource pool.
+
+---
 
 ### 🗺️ `typedef struct s_config`
 Represents the game's configuration, containing global settings like map size and team/unit configurations.
@@ -346,6 +368,8 @@ typedef struct s_config
 } t_config;
 ```
 
+---
+
 ### 🛠️ `typedef struct s_action_create`
 Represents the action of creating a unit.
 
@@ -355,6 +379,8 @@ typedef struct s_action_create
 	unsigned long type_id;       // Type ID of the unit to create
 } t_action_create;
 ```
+
+---
 
 ### 🚶‍♂️ `typedef struct s_action_travel`
 Represents the action of moving a unit to a specific location.
@@ -368,6 +394,8 @@ typedef struct s_action_travel
 } t_action_travel;
 ```
 
+---
+
 ### ⚔️ `typedef struct s_action_attack`
 Represents the action of a unit attacking another unit or object.
 
@@ -378,6 +406,8 @@ typedef struct s_action_attack
 	unsigned long target_id;     // ID of the target unit or object
 } t_action_attack;
 ```
+
+---
 
 ### 🎯 `typedef struct s_actions`
 A collection of actions taken in the game.
@@ -393,6 +423,8 @@ typedef struct s_actions
 	unsigned int attacks_count;  // Count of attack actions
 } t_actions;
 ```
+
+---
 
 ### 🕹️ `typedef struct s_game`
 Represents the entire game state, containing everything from status to teams, cores, resources, units, and actions.
@@ -415,3 +447,9 @@ typedef struct s_game
 
 *Good to know:*
 - **t_game** is the central structure that stores everything happening in the game. Interacting with this structure gives you full access to game data like team status, units, and actions.
+
+<!-- Tabs -->
+<div class="tabs">
+  <button class="tablink" onclick="openTab(event, 'Functions')">Functions</button>
+  <button class="tablink" onclick="openTab(event, 'DataTypes')">Data Types</button>
+</div>

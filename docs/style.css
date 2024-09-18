@@ -1,0 +1,31 @@
+/* Style the tab links */
+.tabs {
+	overflow: hidden;
+	background-color: #f1f1f1;
+  }
+  
+  .tablink {
+	background-color: #ddd;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	text-align: center;
+	transition: 0.3s;
+  }
+  
+  .tablink:hover {
+	background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+	display: none;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-top: none;
+  }
+
+  .sidebar {
+	font-size: 0.9rem; 
+  }

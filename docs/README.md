@@ -22,9 +22,56 @@ After you got all that you can either follow the step-by-step guide in [text-for
 7. To confirm that it worked open a new Terminal from inside VSCode and run the `make` command. Head to your browser of choice and type `localhost` (yes without port) into the search bar. You should see the Visualizer and in VSCode your console should be spamming "Crazy CORE Bot"
 8. Once you are inside the Container Developing Area head to the `src/` folder and start coding 😎
 
+## Example code
+> Here we have a simple example bot
+
+(INFO: the [game variable](./standard-library/README.md#DataTypes) is a global variable that has all the game information inside it)
+```c
+void ft_user_loop()
+{
+	// get my units
+	t_obj **my_units = ft_get_my_units();
+
+	// get my team
+	t_team *my_team = ft_get_my_team();
+
+	// get my core
+	t_obj *my_core = ft_get_my_core();
+	
+
+	// try to spawn unit
+	ft_create(game.config.units[0]);
+
+	// loop through all of my units (the end of the array is when the unit id is 0)
+	for (int i = 0; my_units[i]->id != 0; i++)
+	{
+		// we get the nearest core to the unit
+		t_obj *other_core = ft_get_nearest_core(my_units[i]);
+
+		// we get the nearest opponent unit to the unit
+		t_obj *nearest_opp_unit = ft_get_nearest_opponent_unit(my_units[i]);
+
+		// we don't differenciate what kind of unit we have
+
+		// if there is still currently an enemy unit we travel to it and attack
+		if (nearest_opp_unit)
+		{
+			ft_travel_attack(my_units[i], nearest_res);
+		}
+		else // otherwise we just try to attack the closest core
+			ft_travel_attack(my_units[i], other_core);
+	}
+
+	// finally we free everything that was malloc'd
+	free(my_units); // in this case it's only my_units because its a double pointer and double pointers are usually malloc'd here
+
+}
+
+```
+
 ## Standard Library
 Head to the [standard library function docs](./standard-library/README.md)
 
-## Q and A
+## FAQ
 You find the FAQ here [FAQ](./faq.md)
 

@@ -250,6 +250,7 @@ typedef struct s_resource_config
 
 	unsigned long balance_value;
 } t_resource_config;
+
 typedef struct s_config
 {
 	unsigned long height;

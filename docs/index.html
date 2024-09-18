@@ -13,12 +13,20 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: 'CORE',
-      repo: ''
+      name: 'CORE Documentation',
+      repo: '',
+      search: {
+        maxAge: 86400000,
+        paths: 'auto',
+        placeholder: 'Search...',
+        noData: 'No results found',
+        depth: 8,
+      }
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
 </body>
 </html>

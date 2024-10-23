@@ -5,7 +5,7 @@
 
 ## 🛠 Functions Overview
 
-### Init and Main Loop
+### ⚙️🔄 Init and Main Loop
 
 #### ⚙️ `void ft_init_con(char *team_name, int *argc, char **argv);`
 Initializes the connection to the game server.
@@ -170,13 +170,13 @@ Returns a reference to the closest resource to `t_obj *unit`.
 ##### 🛠️ `t_unit_config *ft_get_unit_config(t_unit_type type);`
 Returns the configuration of a unit based on its type.
 
-### Utils
+### 📏 Utils
 
 #### 📏 `double ft_distance(t_obj *obj1, t_obj *obj2);`
 Calculates the distance between `t_obj *obj1` and `t_obj *obj2` on the playing field.
 
 
-### Travel functions
+### 🚶‍♂️ Travel functions
 
 #### 🚶‍♂️ `void ft_travel_to_id(unsigned long id, unsigned long x, unsigned long y);`
 Commands a unit to travel to a specific coordinate based on the unit’s ID.
@@ -212,7 +212,7 @@ Commands a unit to travel to another object based on the unit’s ID.
 Commands a unit to travel to another object based on a unit pointer.
 
 
-### Unit creation/spawning
+### 🛠️ Unit creation/spawning
 
 #### 🛠️ `void ft_create_type_id(t_unit_type type_id);`
 Creates a unit of a specific type based on its type ID.
@@ -223,7 +223,7 @@ Creates a unit of a specific type based on its type ID.
 Creates a unit of a specific type based on a unit configuration pointer.
 
 
-### Attack functions
+### ⚔️ Attack functions
 
 #### ⚔️ `void ft_attack_id(unsigned long attacker_id, unsigned long target_id);`
 Commands a unit to attack another unit using their IDs.
@@ -390,8 +390,9 @@ typedef struct s_game
 *Good to know:*
 - **t_game** is the central structure that stores everything happening in the game. Interacting with this structure gives you full access to game data like team status, units, and actions.
 
-<!-- Tabs -->
+<!-- Tabs 
 <div class="tabs">
   <button class="tablink" onclick="openTab(event, 'Functions')">Functions</button>
   <button class="tablink" onclick="openTab(event, 'DataTypes')">Data Types</button>
 </div>
+-->

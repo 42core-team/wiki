@@ -7,28 +7,11 @@ To start building your own CORE bot, ensure you've completed the following prere
 
 ### Prerequisites
 1. **Be a Registered CORE Participant/Team** ✨
-   - You must be officially registered as a participant or part of a team in the CORE event.
-   - Learn how to register here: [How to become a CORE participant](Get a CORE participant).
+   - You must be officially registered as a participant or part of a team in the CORE event (Slack).
 
 2. **Receive Your CORE Repository Invite** 📧
    - You will receive an invite link to your dedicated CORE repository on GitHub.
    - This invite will be sent once you're registered and the event is about to begin.
-
----
-
-### What's Next? 🔜
-
-Once you've completed the steps above, you can move forward with your bot development setup:
-- **Follow the [Text Guide](#text-guide)** for detailed, step-by-step instructions.
-- **Watch the [Video Guide](#video-guide)** if you prefer learning visually.
-
-> 💡 Happy coding and good luck with your CORE bot project!
-
----
-
-## 🎥 Video Guide
-[![Video Guide](./docs/favicon.ico)](assets/videos/quickstart-uncut.mp4 "Click to Watch the Video")
-> **Note**: Video guide will be available soon. 
 
 ---
 

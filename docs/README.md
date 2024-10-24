@@ -23,6 +23,7 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 - Once the invites are out head into you **inbox** on GitHub and accept the **invite** to your teams repository.
 
 ### 2. Clone Your Team's Repository 🖥️
+> Clone with HTTP instead of SSH, so that you are able to push from inside the Container.
 - Open a terminal and run:
 	```bash
 	git clone <your-repo-url>
@@ -77,7 +78,6 @@ void	ft_user_loop(void *data)
     // get the first opponent core there is
 	t_obj *enemy_core = ft_get_first_opponent_core();
 
-	ft_create_type_id(UNIT_WORKER); // try to create a worker
 	ft_create_type_id(UNIT_WARRIOR); // try to create a warrior
 
 	i = -1;
@@ -91,12 +91,6 @@ void	ft_user_loop(void *data)
 				ft_travel_attack(curr, war); // travel and then attack to the obj
 			else
 				ft_traval_attack(curr, enemy_core);
-		}
-		else if (curr->s_unit.type_id == UNIT_WORKER) // if the units is a worker
-		{
-			t_obj *res = ft_get_nearest_resource(curr); // try to get the closest unit to current unit
-			if (res)
-				ft_travel_attack(curr, res);
 		}
 	}
 

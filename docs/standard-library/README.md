@@ -3,6 +3,9 @@
 <!-- Tab Content -->
 <div id="Functions" class="tabcontent"></div>
 
+## General Information
+Those are all the functions currently available in the standart C lib for CORE. Fell free to use all the functions available!
+
 ## 🛠 Functions Overview
 
 ### ⚙️🔄 Init and Main Loop
@@ -20,7 +23,7 @@ Closes the connection to the game server.
 #### 🔄 `void ft_loop(void (*ft_init_func)(void *ptr), void (*ft_user_loop)(void *ptr), void *ptr);`
 Registers the user loop function, which is called approximately 50 times per second. This is where you can place your bot's main logic.
 
-
+---
 ### 🐞📜 Debugging and Logging
 
 #### 🐞 `void ft_enable_debug();`
@@ -79,7 +82,7 @@ Prints the current game configuration, including game dimensions, income, core h
 #### 📜 `void ft_print_all();`
 Prints all available game information, including the game configuration, status, teams, cores, resources, and units.
 
-
+---
 ### 🔍💻 Getter
 > Those are all the pre-defined functions and with those you cat get  varios things like the closest unit or your own team.
 
@@ -114,7 +117,9 @@ typedef struct s_obj
 
 ---
 
+---
 #### 🤝💪 Team and Core
+> Functions to retrieve data about teams and cores
 
 ##### 🏅 `t_team *ft_get_my_team();`
 Returns a reference to your team’s struct, allowing you to access all its information.
@@ -139,7 +144,9 @@ Returns a reference to the core of the first opponent.
 ##### 🎯 `t_obj *ft_get_nearest_core(t_obj *obj);`
 Returns a reference to the closest core from `t_obj *obj`'s position.
 
+---
 #### 🛡️⚔️ Unit
+> Functions to retrieve team units, enemy units, closest unit,...
 
 ##### 👥 `t_obj **ft_get_my_units();`
 Returns a null-terminated array of pointers to your team's units.
@@ -159,24 +166,29 @@ Returns a reference to the closest unit to `t_obj *unit` (can be from your team)
 ##### 🔍 `t_obj *ft_get_nearest_opponent_unit(t_obj *unit);`
 Returns a reference to the closest opponent unit to `t_obj *unit` (cannot be from your team).
 
-
+---
 #### 📦💡 Resource
+> Functions to retrieve resources
 
 ##### 🌾 `t_obj *ft_get_nearest_resource(t_obj *unit);`
 Returns a reference to the closest resource to `t_obj *unit`.
 
+---
 #### ➡️🌀 Other
-
+> Other useful Functions
 ##### 🛠️ `t_unit_config *ft_get_unit_config(t_unit_type type);`
 Returns the configuration of a unit based on its type.
 
+---
 ### 📏 Utils
+> Utility functions
 
 #### 📏 `double ft_distance(t_obj *obj1, t_obj *obj2);`
 Calculates the distance between `t_obj *obj1` and `t_obj *obj2` on the playing field.
 
-
+---
 ### 🚶‍♂️ Travel functions
+> Functions to make units move
 
 #### 🚶‍♂️ `void ft_travel_to_id(unsigned long id, unsigned long x, unsigned long y);`
 Commands a unit to travel to a specific coordinate based on the unit’s ID.
@@ -211,8 +223,9 @@ Commands a unit to travel to another object based on the unit’s ID.
 #### 🎯 `void ft_travel_to_obj(t_obj *unit, t_obj *target);`
 Commands a unit to travel to another object based on a unit pointer.
 
-
+---
 ### 🛠️ Unit creation/spawning
+> Functions to buy/spawn new units
 
 #### 🛠️ `void ft_create_type_id(t_unit_type type_id);`
 Creates a unit of a specific type based on its type ID.
@@ -222,8 +235,9 @@ Creates a unit of a specific type based on its type ID.
 #### 🛠️ `void ft_create(t_unit_config *unit_config);`
 Creates a unit of a specific type based on a unit configuration pointer.
 
-
+---
 ### ⚔️ Attack functions
+> Functions to handle the attacking of objects like enemy units, resources and core
 
 #### ⚔️ `void ft_attack_id(unsigned long attacker_id, unsigned long target_id);`
 Commands a unit to attack another unit using their IDs.
@@ -246,7 +260,7 @@ Commands a unit to travel to a target and attack it. Equivalent to calling `ft_t
 
 ## 📊 Data Types
 
-Here you'll find the main data types and structures used in the game logic. These are essential for understanding how to interact with game elements, control units, and manage actions.
+> Here you'll find the main data types and structures used in the game logic. These are essential for understanding how to interact with game elements, control units, and manage actions.
 
 ---
 

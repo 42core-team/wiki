@@ -67,42 +67,40 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 > **INFO**: The [game variable](./standard-library/README.md#DataTypes) is a global variable containing all the game information.
 
 ```c
-void ft_user_loop()
+void	ft_user_loop(void *data)
 {
-    // Get my units
-    t_obj **my_units = ft_get_my_units();
+	(void)data;
 
-    // Get my team
-    t_team *my_team = ft_get_my_team();
+    // get all units of own team
+	t_obj **units = ft_get_my_units();
 
-    // Get my core
-    t_obj *my_core = ft_get_my_core();
+    // get the first opponent core there is
+	t_obj *enemy_core = ft_get_first_opponent_core();
 
-    // Try to spawn a unit
-    ft_create(game.config.units[0]);
+	ft_create_type_id(UNIT_WORKER); // try to create a worker
+	ft_create_type_id(UNIT_WARRIOR); // try to create a warrior
 
-    // Loop through all of my units (the end of the array is when the unit id is 0)
-    for (int i = 0; my_units[i]->id != 0; i++)
-    {
-        // Get the nearest core to the unit
-        t_obj *other_core = ft_get_nearest_core(my_units[i]);
+	i = -1;
+	while (units[++i]) // loop through every of our units
+	{
+		curr = units[i];
+		if (curr->s_unit.type_id == UNIT_WARRIOR) // if the unit is a warrior
+		{
+			t_obj *war = ft_get_nearest_opponent_unit(curr); // try to get the closest core to current unit
+			if (war)
+				ft_travel_attack(curr, war); // travel and then attack to the obj
+			else
+				ft_traval_attack(curr, enemy_core);
+		}
+		else if (curr->s_unit.type_id == UNIT_WORKER) // if the units is a worker
+		{
+			t_obj *res = ft_get_nearest_resource(curr); // try to get the closest unit to current unit
+			if (res)
+				ft_travel_attack(curr, res);
+		}
+	}
 
-        // Get the nearest opponent unit to the unit
-        t_obj *nearest_opp_unit = ft_get_nearest_opponent_unit(my_units[i]);
-
-        // If there is an enemy unit nearby, travel to it and attack
-        if (nearest_opp_unit)
-        {
-            ft_travel_attack(my_units[i], nearest_opp_unit);
-        }
-        else // Otherwise, attack the closest core
-        {
-            ft_travel_attack(my_units[i], other_core);
-        }
-    }
-
-    // Free any allocated memory (here, only my_units because it's a double pointer)
-    free(my_units);
+	free(units);
 }
 ```
 

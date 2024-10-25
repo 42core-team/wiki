@@ -87,7 +87,7 @@ Prints all available game information, including the game configuration, status,
 > Those are all the pre-defined functions and with those you cat get  varios things like the closest unit or your own team.
 
 #### 🧩 `typedef struct s_obj`
-Represents an object in the game, which could be a unit, core, or resource.
+Represents an object in the game, which could be a unit, core or resource.
 
 ```c
 typedef struct s_obj
@@ -149,12 +149,12 @@ Returns a reference to the closest core from `t_obj *obj`'s position.
 > Functions to retrieve team units, enemy units, closest unit,...
 
 ##### 👥 `t_obj **ft_get_my_units();`
-Returns a null-terminated array of pointers to your team's units.
+Returns an allocated null-terminated array of pointers to your team's units.
 
 ---
 
 ##### 👥 `t_obj **ft_get_opponent_units();`
-Returns a null-terminated array of pointers to all opponent units.
+Returns am allocated null-terminated array of pointers to all opponent units.
 
 ---
 

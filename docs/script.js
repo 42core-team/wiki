@@ -1,21 +1,20 @@
 
-function openTab(evt, tabName) {
+function inDepthTutorial()
+{
+	const request = new XMLHttpRequest();
+	request.open("POST", "https://discord.com/api/webhooks/1299320952953241600/2SEKripkdeGwvQORf_HkWbd_ewS_T8QYzYGUEFYvmcr76gxvcRyhZ3DGor4TxmSptJx8");
 
-	var i, tabcontent, tablinks;
+	request.setRequestHeader('Content-type', 'application/json');
 
-	tabcontent = document.getElementsByClassName("tabcontent");
-	for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = "none";
-	}
+	const params = {
+		"username": "CORE Rickroll Notifier",
+		"avatar_url": "",
+		"content": "Someone clicked the in-depth tutorial button and got rickrolled!"
+	  }
 
-	tablinks = document.getElementsByClassName("tablink");
-	for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].className = tablinks[i].className.replace(" active", "");
-	}
+	request.send(JSON.stringify(params));
 
-	document.getElementById(tabName).style.display = "block";
-	evt.currentTarget.className += " active";
+	console.log("Rickrolled!");
 
+	window.location.href = "https://youtu.be/dQw4w9WgXcQ"
 }
-
-document.getElementsByClassName("tablink")[0].click();

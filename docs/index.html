@@ -33,6 +33,45 @@
         responsiveTables: true
       }
     }
+
+    function inDepthTutorial()
+    {
+
+      const request = new XMLHttpRequest();
+      request.open("POST", "https://discord.com/api/webhooks/1299320952953241600/2SEKripkdeGwvQORf_HkWbd_ewS_T8QYzYGUEFYvmcr76gxvcRyhZ3DGor4TxmSptJx8");
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      const params = {
+        "username": "CORE Rickroll Notifier",
+        "avatar_url": "",
+        "content": "Someone clicked the in-depth tutorial button and got rickrolled!"
+      };
+
+
+      request.send(JSON.stringify(params));
+
+      const urls = [
+        "https://rickroll.it/rickroll.mp4",
+        "https://rickroll.it/rickroll.mp4",
+        "https://rickroll.it/rickroll.mp4",
+        "https://rickroll.it/rickroll.mp4",
+        "https://rickroll.it/rickroll.mp4",
+        "https://rickroll.it/rickroll.mp4",
+        "https://rickroll.it/rickroll.mp4",
+        "https://rickroll.it/rickroll.mp4",
+        "https://youtu.be/At8v_Yc044Y?si=ahGnGEhgoMDi_CaO&t=52",
+      ]
+
+
+      const randomUrl = urls[Math.floor(Math.random() * urls.length)];
+
+      setTimeout(function() {
+        window.location.href = randomUrl;
+      }, 4242);
+
+    }
+
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>

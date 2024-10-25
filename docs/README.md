@@ -65,8 +65,6 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 ## 📝 Example Code
 > Here's a simple example bot to get you started.
 
-> **INFO**: The [game variable](./standard-library/README.md#DataTypes) is a global variable containing all the game information.
-
 ```c
 void	ft_user_loop(void *data)
 {
@@ -97,6 +95,8 @@ void	ft_user_loop(void *data)
 	free(units);
 }
 ```
+
+<button onclick="inDepthTutorial()">Check out the in-depth tutorial for the library</button>
 
 # [📚 Standard Library](./standard-library/README.md)
 

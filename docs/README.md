@@ -57,6 +57,7 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 - In the VSCode terminal, the message **"Crazy CORE Bot"** should be printed continuously.
 
 ### 8. Start Developing 💻
+> When running make again you might have to reload the visualizer page for it to work!
 - Navigate to the `src/` folder inside the container.
 
 🎉 **You are now ready to start coding!** 😎

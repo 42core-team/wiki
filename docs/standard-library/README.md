@@ -202,16 +202,19 @@ Takes:
 
 #### 🚶‍♀️ `void ft_travel_to(t_obj *unit, unsigned long x, unsigned long y);`
 Commands a unit to travel to a specific coordinate based on a unit pointer.
+X and Y are a direction vector.
 
 ---
 
 #### ↔️ `void ft_travel_dir_id(unsigned long id, long x, long y);`
 Commands a unit to move in a specific direction based on the unit’s ID.
+X and Y are a direction vector.
 
 ---
 
 #### ↔️ `void ft_travel_dir(t_obj *unit, long x, long y);`
 Commands a unit to move in a specific direction based on a unit pointer.
+X and Y are a direction vector.
 
 ---
 

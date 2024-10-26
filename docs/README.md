@@ -58,7 +58,7 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 
 ### 8. Start Developing 💻
 > When running make again you might have to reload the visualizer page for it to work!
-- Navigate to the `src/` folder inside the container.
+- Navigate to the `src/` folder inside the container (Every .c file in there should get compiled).
 
 🎉 **You are now ready to start coding!** 😎
 

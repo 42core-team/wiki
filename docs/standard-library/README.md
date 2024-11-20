@@ -115,6 +115,8 @@ typedef struct s_obj
 - Units can either be workers or warriors and have specific stats like HP and position.
 - Resources are critical for a team’s economic strength.
 
+
+
 ---
 
 ---
@@ -178,6 +180,9 @@ Returns a reference to the closest resource to `t_obj *unit`.
 > Other useful Functions
 ##### 🛠️ `t_unit_config *ft_get_unit_config(t_unit_type type);`
 Returns the configuration of a unit based on its type.
+
+##### 🏅 `t_obj *ft_get_obj_from_id(unsigned long id);`
+Returns a reference to any given t_obj in-game, or NULL if nothing was found.
 
 ---
 ### 📏 Utils

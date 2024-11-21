@@ -235,13 +235,8 @@ Commands a unit to travel to another object based on a unit pointer.
 ### 🛠️ Unit creation/spawning
 > Functions to buy/spawn new units
 
-#### 🛠️ `void ft_create_type_id(t_unit_type type_id);`
+#### 🛠️ `void ft_create_unit(t_unit_type type_id);`
 Creates a unit of a specific type based on its type ID.
-
----
-
-#### 🛠️ `void ft_create(t_unit_config *unit_config);`
-Creates a unit of a specific type based on a unit configuration pointer.
 
 ---
 ### ⚔️ Attack functions

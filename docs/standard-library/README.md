@@ -59,17 +59,17 @@ Prints information about all units, including their ID, type ID, team ID, coordi
 
 ---
 
-#### 🛠️ `void print_team_config(const t_team_config *team_config);`
+#### 🛠️ `void ft_print_team_config(const t_team_config *team_config);`
 Prints a team’s configuration to the console.
 
 ---
 
-#### 🛠️ `void print_unit_config(const t_unit_config *unit_config);`
+#### 🛠️ `void ft_print_unit_config(const t_unit_config *unit_config);`
 Prints a unit’s configuration to the console, including details such as type ID, name, cost, health, and damage.
 
 ---
 
-#### 🛠️ `void print_resource_config(const t_resource_config *resource_config);`
+#### 🛠️ `void ft_print_resource_config(const t_resource_config *resource_config);`
 Prints a resource’s configuration to the console.
 
 ---

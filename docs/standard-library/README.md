@@ -12,6 +12,7 @@ Those are all the functions currently available in the standart C lib for CORE. 
 
 #### ⚙️ `void ft_init_con(char *team_name, int *argc, char **argv);`
 Initializes the connection to the game server.
+Pass your team name as the first parameter.
 
 ---
 
@@ -92,12 +93,15 @@ Represents an object in the game, which could be a unit, core or resource.
 ```c
 typedef struct s_obj
 {
-	t_obj_type type;             // Object type (unit, core, or resource)
-	unsigned long id;            // Unique identifier
-	unsigned long x, y;          // Object's coordinates
-	unsigned long hp;            // Object's health points
+	t_obj_type type;                 // Object type (unit, core, or resource)
+	t_obj_state state;               // Object state (uninitialized, alive or dead)
+	void *data;                      // Your custom data - save anything you want here.
 
-	union {                      // Type-specific details for cores or units
+	unsigned long id;                // Unique identifier
+	unsigned long x, y;              // Object's coordinates
+	unsigned long hp;                // Object's health points
+
+	union {                          // Type-specific details for cores or units
 		struct {
 			unsigned long team_id;   // Team identifier (for cores)
 		} s_core;
@@ -114,6 +118,10 @@ typedef struct s_obj
 - Cores belong to teams and are essential for the game's victory conditions (Your core has to be the last one alive to win the game).
 - Units can either be workers or warriors and have specific stats like HP and position.
 - Resources are critical for a team’s economic strength.
+- When working on t_objs, it's recommended to ensure they are currently alive.
+	- They may be uninitialized immediately after creation, but the memory location will stay consistent forever.
+	- They will stay available after death for memory management purposes.
+	- If objects are not alive when you use them, behavior is undefined.
 
 
 
@@ -235,8 +243,8 @@ Commands a unit to travel to another object based on a unit pointer.
 ### 🛠️ Unit creation/spawning
 > Functions to buy/spawn new units
 
-#### 🛠️ `void ft_create_unit(t_unit_type type_id);`
-Creates a unit of a specific type based on its type ID.
+#### 🛠️ `t_obj *ft_create_unit(t_unit_type type_id);`
+Creates a unit of a specific type based on its type ID. When created, new units will be in an uninitialized state for 1 loop iteration. Any data may be inconsistent, but the memory location will stay the same forever.
 
 ---
 ### ⚔️ Attack functions
@@ -293,6 +301,20 @@ typedef enum e_obj_type
 	OBJ_CORE,                    // A core (the base of a team)
 	OBJ_RESOURCE                 // A resource (e.g., minerals)
 } t_obj_type;
+```
+
+---
+
+### 🔗 `typedef enum e_obj_state`
+Represents the types of objects in the game.
+
+```c
+typedef enum e_obj_type
+{
+	STATE_UNINITIALIZED = 1,    // any data is still subject to change
+	STATE_ALIVE = 2,            // default state. normal object.
+	STATE_DEAD = 3              // dead unit / mined resource / ...
+} t_obj_state;
 ```
 
 ---
@@ -356,8 +378,8 @@ Defines the configuration for resources, including their health and value.
 ```c
 typedef struct s_resource_config
 {
-	unsigned long type_id;      // Resource type identifier
-	unsigned long hp;           // Health points of the resource
+	unsigned long type_id;       // Resource type identifier
+	unsigned long hp;            // Health points of the resource
 	unsigned long balance_value; // Value added to the team’s balance when collected
 } t_resource_config;
 ```
@@ -373,12 +395,12 @@ Represents the game's configuration, containing global settings like map size an
 ```c
 typedef struct s_config
 {
-	unsigned long height;        // Map height
-	unsigned long width;         // Map width
-	unsigned long idle_income;   // Income generated while idle
-	unsigned long core_hp;       // Health points for cores
-	t_team_config *teams;        // Pointer to the team configurations
-	t_unit_config *units;        // Pointer to the unit configurations
+	unsigned long height;         // Map height
+	unsigned long width;          // Map width
+	unsigned long idle_income;    // Income generated while idle
+	unsigned long core_hp;        // Health points for cores
+	t_team_config *teams;         // Pointer to the team configurations
+	t_unit_config *units;         // Pointer to the unit configurations
 	t_resource_config *resources; // Pointer to the resource configurations
 } t_config;
 ```
@@ -396,10 +418,10 @@ typedef struct s_game
 	t_status status;             // Current game status (OK, Paused, End, etc.)
 	t_config config;             // Game configuration (map size, teams, units, etc.)
 	unsigned long my_team_id;    // ID of your team
-	t_team *teams;               // Pointer to all teams in the game
-	t_obj *cores;                // Pointer to all cores
-	t_obj *resources;            // Pointer to all resources
-	t_obj *units;                // Pointer to all units
+	t_team **teams;              // Pointer to all teams in the game
+	t_obj **cores;               // Pointer to all cores
+	t_obj **resources;           // Pointer to all resources
+	t_obj **units;               // Pointer to all units
 	t_actions actions;           // List of actions (create, travel, attack)
 } t_game;
 ```

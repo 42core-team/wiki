@@ -5,10 +5,5 @@
 	"mounts": [
 		"source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
 		"source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=cached"
-	],
-	"dockerOptions": {
-        "user": "vscode",
-        "memory": "16GB",
-        "cpus": "12"
-    }
+	]
 }

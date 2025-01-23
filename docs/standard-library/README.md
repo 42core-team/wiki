@@ -3,31 +3,32 @@
 <!-- Tab Content -->
 <div id="Functions" class="tabcontent"></div>
 
-## General Information
-Those are all the functions currently available in the standart C lib for CORE. Fell free to use all the functions available!
+Those are all the functions currently available in the standart C lib for CORE.  
+Fell free to use all the functions available!
 
-## 🛠 Functions Overview
+# 🛠 Functions Overview
 
-### ⚙️🔄 Init and Main Loop
+## ⚙️🔄 Init and Main Loop
 
-#### ⚙️ `void ft_init_con(char *team_name, int *argc, char **argv);`
+### ⚙️ `void ft_init_con(char *team_name, int *argc, char **argv);`
 Initializes the connection to the game server.
 Pass your team name as the first parameter.
 
 ---
 
-#### ❌ `void ft_close_con();`
+### ❌ `void ft_close_con();`
 Closes the connection to the game server.
 
 ---
 
-#### 🔄 `void ft_loop(void (*ft_init_func)(void *ptr), void (*ft_user_loop)(void *ptr), void *ptr);`
-Registers the user loop function, which is called approximately 50 times per second. This is where you can place your bot's main logic.
+### 🔄 `void ft_loop(void (*ft_init_func)(void *ptr), void (*ft_user_loop)(void *ptr), void *ptr);`
+Registers the user loop function, which is called approximately 50 times per second.  
+This is where you can place your bot's main logic.
 
 ---
-### 🐞📜 Debugging and Logging
+## 🐞📜 Debugging and Logging
 
-#### 🐞 `void ft_enable_debug();`
+### 🐞 `void ft_enable_debug();`
 Enables debug mode, allowing you to see additional info in the console such as:
 - Both teams
 - Units
@@ -35,59 +36,59 @@ Enables debug mode, allowing you to see additional info in the console such as:
 
 ---
 
-#### 📊 `void ft_print_status();`
+### 📊 `void ft_print_status();`
 Prints the current game status to the console.
 
 ---
 
-#### 🏅 `void ft_print_teams();`
+### 🏅 `void ft_print_teams();`
 Prints information about both teams, including their ID and balance.
 
 ---
 
-#### 🏰 `void ft_print_cores();`
+### 🏰 `void ft_print_cores();`
 Prints information about all cores, including their ID, team ID, coordinates, and health points.
 
 ---
 
-#### 🌾 `void ft_print_resources();`
+### 🌾 `void ft_print_resources();`
 Prints information about all resources, including their ID, value, coordinates, and health points.
 
 ---
 
-#### 👥 `void ft_print_units();`
+### 👥 `void ft_print_units();`
 Prints information about all units, including their ID, type ID, team ID, coordinates, and health points.
 
 ---
 
-#### 🛠️ `void ft_print_team_config(const t_team_config *team_config);`
+### 🛠️ `void ft_print_team_config(const t_team_config *team_config);`
 Prints a team’s configuration to the console.
 
 ---
 
-#### 🛠️ `void ft_print_unit_config(const t_unit_config *unit_config);`
+### 🛠️ `void ft_print_unit_config(const t_unit_config *unit_config);`
 Prints a unit’s configuration to the console, including details such as type ID, name, cost, health, and damage.
 
 ---
 
-#### 🛠️ `void ft_print_resource_config(const t_resource_config *resource_config);`
+### 🛠️ `void ft_print_resource_config(const t_resource_config *resource_config);`
 Prints a resource’s configuration to the console.
 
 ---
 
-#### ⚙️ `void ft_print_game_config();`
+### ⚙️ `void ft_print_game_config();`
 Prints the current game configuration, including game dimensions, income, core health, teams, and units.
 
 ---
 
-#### 📜 `void ft_print_all();`
+### 📜 `void ft_print_all();`
 Prints all available game information, including the game configuration, status, teams, cores, resources, and units.
 
 ---
-### 🔍💻 Getter
+## 🔍💻 Getter
 > Those are all the pre-defined functions and with those you cat get  varios things like the closest unit or your own team.
 
-#### 🧩 `typedef struct s_obj`
+### 🧩 `typedef struct s_obj`
 Represents an object in the game, which could be a unit, core or resource.
 
 ```c
@@ -127,83 +128,86 @@ typedef struct s_obj
 
 ---
 
----
-#### 🤝💪 Team and Core
+### 🤝💪 Team and Core
 > Functions to retrieve data about teams and cores
 
-##### 🏅 `t_team *ft_get_my_team();`
+#### 🏅 `t_team *ft_get_my_team();`
 Returns a reference to your team’s struct, allowing you to access all its information.
 
 ---
 
-##### 🥇 `t_team *ft_get_first_opponent_team();`
+#### 🥇 `t_team *ft_get_first_opponent_team();`
 Returns a reference to the first opponent team's struct.
 
 ---
 
-##### 🏰 `t_obj *ft_get_my_core();`
+#### 🏰 `t_obj *ft_get_my_core();`
 Returns a reference to your core’s struct.
 
 ---
 
-##### 🏴‍☠️ `t_obj *ft_get_first_opponent_core();`
+#### 🏴‍☠️ `t_obj *ft_get_first_opponent_core();`
 Returns a reference to the core of the first opponent.
 
 ---
 
-##### 🎯 `t_obj *ft_get_nearest_core(t_obj *obj);`
+#### 🎯 `t_obj *ft_get_nearest_core(t_obj *obj);`
 Returns a reference to the closest core from `t_obj *obj`'s position.
 
 ---
-#### 🛡️⚔️ Unit
+### 🛡️⚔️ Unit
 > Functions to retrieve team units, enemy units, closest unit,...
 
-##### 👥 `t_obj **ft_get_my_units();`
-Returns an allocated null-terminated array of pointers to your team's units.
+#### 👥 `t_obj **ft_get_my_units();`
+Returns an **allocated** null-terminated array of pointers to your team's units.
+> [!WARNING]
+> Don't forget to free the array after using it!
 
 ---
 
-##### 👥 `t_obj **ft_get_opponent_units();`
-Returns am allocated null-terminated array of pointers to all opponent units.
+#### 👥 `t_obj **ft_get_opponent_units();`
+Returns an **allocated** null-terminated array of pointers to all opponent units.
+> [!WARNING]
+> Don't forget to free the array after using it!
 
 ---
 
-##### 🔍 `t_obj *ft_get_nearest_unit(t_obj *unit);`
+#### 🔍 `t_obj *ft_get_nearest_unit(t_obj *unit);`
 Returns a reference to the closest unit to `t_obj *unit` (can be from your team).
 
 ---
 
-##### 🔍 `t_obj *ft_get_nearest_opponent_unit(t_obj *unit);`
+#### 🔍 `t_obj *ft_get_nearest_opponent_unit(t_obj *unit);`
 Returns a reference to the closest opponent unit to `t_obj *unit` (cannot be from your team).
 
 ---
-#### 📦💡 Resource
+### 📦💡 Resource
 > Functions to retrieve resources
 
-##### 🌾 `t_obj *ft_get_nearest_resource(t_obj *unit);`
+#### 🌾 `t_obj *ft_get_nearest_resource(t_obj *unit);`
 Returns a reference to the closest resource to `t_obj *unit`.
 
 ---
-#### ➡️🌀 Other
+### ➡️🌀 Other
 > Other useful Functions
-##### 🛠️ `t_unit_config *ft_get_unit_config(t_unit_type type);`
+#### 🛠️ `t_unit_config *ft_get_unit_config(t_unit_type type);`
 Returns the configuration of a unit based on its type.
 
-##### 🏅 `t_obj *ft_get_obj_from_id(unsigned long id);`
+#### 🏅 `t_obj *ft_get_obj_from_id(unsigned long id);`
 Returns a reference to any given t_obj in-game, or NULL if nothing was found.
 
 ---
-### 📏 Utils
+## 📏 Utils
 > Utility functions
 
-#### 📏 `double ft_distance(t_obj *obj1, t_obj *obj2);`
+### 📏 `double ft_distance(t_obj *obj1, t_obj *obj2);`
 Calculates the distance between `t_obj *obj1` and `t_obj *obj2` on the playing field.
 
 ---
-### 🚶‍♂️ Travel functions
+## 🚶‍♂️ Travel functions
 > Functions to make units move
 
-#### 🚶‍♂️ `void ft_travel_to_id(unsigned long id, unsigned long x, unsigned long y);`
+### 🚶‍♂️ `void ft_travel_to_id(unsigned long id, unsigned long x, unsigned long y);`
 Commands a unit to travel to a specific coordinate based on the unit’s ID.
 
 Takes:
@@ -213,54 +217,54 @@ Takes:
 
 ---
 
-#### 🚶‍♀️ `void ft_travel_to(t_obj *unit, unsigned long x, unsigned long y);`
+### 🚶‍♀️ `void ft_travel_to(t_obj *unit, unsigned long x, unsigned long y);`
 Commands a unit to travel to a specific coordinate based on a unit pointer.
 X and Y are a direction vector.
 
 ---
 
-#### ↔️ `void ft_travel_dir_id(unsigned long id, long x, long y);`
+### ↔️ `void ft_travel_dir_id(unsigned long id, long x, long y);`
 Commands a unit to move in a specific direction based on the unit’s ID.
 X and Y are a direction vector.
 
 ---
 
-#### ↔️ `void ft_travel_dir(t_obj *unit, long x, long y);`
+### ↔️ `void ft_travel_dir(t_obj *unit, long x, long y);`
 Commands a unit to move in a specific direction based on a unit pointer.
 X and Y are a direction vector.
 
 ---
 
-#### 🎯 `void ft_travel_to_id_obj(unsigned long id, t_obj *target);`
+### 🎯 `void ft_travel_to_id_obj(unsigned long id, t_obj *target);`
 Commands a unit to travel to another object based on the unit’s ID.
 
 ---
 
-#### 🎯 `void ft_travel_to_obj(t_obj *unit, t_obj *target);`
+### 🎯 `void ft_travel_to_obj(t_obj *unit, t_obj *target);`
 Commands a unit to travel to another object based on a unit pointer.
 
 ---
-### 🛠️ Unit creation/spawning
+## 🛠️ Unit creation/spawning
 > Functions to buy/spawn new units
 
-#### 🛠️ `t_obj *ft_create_unit(t_unit_type type_id);`
+### 🛠️ `t_obj *ft_create_unit(t_unit_type type_id);`
 Creates a unit of a specific type based on its type ID. When created, new units will be in an uninitialized state for 1 loop iteration. Any data may be inconsistent, but the memory location will stay the same forever.
 
 ---
-### ⚔️ Attack functions
+## ⚔️ Attack functions
 > Functions to handle the attacking of objects like enemy units, resources and core
 
-#### ⚔️ `void ft_attack_id(unsigned long attacker_id, unsigned long target_id);`
+### ⚔️ `void ft_attack_id(unsigned long attacker_id, unsigned long target_id);`
 Commands a unit to attack another unit using their IDs.
 
 ---
 
-#### ⚔️ `void ft_attack(t_obj *attacker, t_obj *target);`
+### ⚔️ `void ft_attack(t_obj *attacker, t_obj *target);`
 Commands a unit to attack another unit using pointers to the units.
 
 ---
 
-#### ⚔️ `void ft_travel_attack(t_obj *attacker_unit, t_obj *attack_obj);`
+### ⚔️ `void ft_travel_attack(t_obj *attacker_unit, t_obj *attack_obj);`
 Commands a unit to travel to a target and attack it. Equivalent to calling `ft_travel_to_obj` and `ft_attack` sequentially.
 
 ---
@@ -269,13 +273,13 @@ Commands a unit to travel to a target and attack it. Equivalent to calling `ft_t
 
 <div id="DataTypes" class="tabcontent"></div>
 
-## 📊 Data Types
+# 📊 Data Types
 
 > Here you'll find the main data types and structures used in the game logic. These are essential for understanding how to interact with game elements, control units, and manage actions.
 
 ---
 
-### 🏅 `typedef struct s_team`
+## 🏅 `typedef struct s_team {} t_team;`
 Represents a team in the game.
 
 ```c
@@ -286,12 +290,12 @@ typedef struct s_team
 } t_team;
 ```
 
-*Good to know:*
-- Balance is crucial for determining whether you can create new units or take certain actions. (Or just spam spawn the units but keep in mind that it's better having a logic behind buying units)
+> [!TIP]
+> Balance is crucial for determining whether you can create new units or take certain actions. (Or just spam spawn the units but keep in mind that it's better having a logic behind buying units)
 
 ---
 
-### 🔗 `typedef enum e_obj_type`
+## 🔗 `typedef enum e_obj_type {} t_obj_type;`
 Represents the types of objects in the game.
 
 ```c
@@ -305,7 +309,7 @@ typedef enum e_obj_type
 
 ---
 
-### 🔗 `typedef enum e_obj_state`
+## 🔗 `typedef enum e_obj_state {} t_obj_state;`
 Represents the types of objects in the game.
 
 ```c
@@ -319,23 +323,21 @@ typedef enum e_obj_type
 
 ---
 
-### ⚔️ `typedef enum e_unit_type`
+## ⚔️ `typedef enum e_unit_type {} t_unit_type;`
 Defines the different types of units.
 
 ```c
 typedef enum e_unit_type
 {
 	UNIT_WARRIOR = 1,           // Combat unit
-	UNIT_WORKER = 2             // Resource-gathering unit
+	UNIT_WORKER = 2,            // Resource-gathering unit
+	...
 } t_unit_type;
 ```
 
-*Good to know:*
-- Warriors deal damage, while workers gather resources or perform other tasks to support the team.
-
 ---
 
-### 🛠️ `typedef struct s_unit_config`
+## 🛠️ `typedef struct s_unit_config {} t_unit_config;`
 Defines the configuration for units, including their stats and abilities.
 
 ```c
@@ -354,12 +356,12 @@ typedef struct s_unit_config
 } t_unit_config;
 ```
 
-*Good to know:*
-- Units have specialized roles: some are better for attacking cores, while others excel at resource gathering or unit combat.
+> [!TIP]
+> Units have specialized roles: some are better for attacking cores, while others excel at resource gathering or unit combat.
 
 ---
 
-### 🏴‍☠️ `typedef struct s_team_config`
+## 🏴‍☠️ `typedef struct s_team_config {} t_team_config;`
 Defines the configuration of a team, including its ID and name.
 
 ```c
@@ -372,7 +374,7 @@ typedef struct s_team_config
 
 ---
 
-### 🌾 `typedef struct s_resource_config`
+## 🌾 `typedef struct s_resource_config {} t_resource_config;`
 Defines the configuration for resources, including their health and value.
 
 ```c
@@ -384,12 +386,12 @@ typedef struct s_resource_config
 } t_resource_config;
 ```
 
-*Good to know:*
-- Resources are vital for team economy, and their balance_value increases the team’s resource pool.
+> [!TIP]
+> Resources are vital for team economy, and their `balance_value` increases the team’s resource pool.
 
 ---
 
-### 🗺️ `typedef struct s_config`
+## 🗺️ `typedef struct s_config {} t_config;`
 Represents the game's configuration, containing global settings like map size and team/unit configurations.
 
 ```c
@@ -407,10 +409,10 @@ typedef struct s_config
 
 ---
 
-### 🕹️ `typedef struct s_game`
+## 🕹️ `typedef struct s_game {} t_game;`
 Represents the entire game state, containing everything from status to teams, cores, resources, units, and actions.
-
-> Note: This struct is globally accessable by just typing `game`
+> [!NOTE]
+> This struct is globally accessable by just typing `game`
 
 ```c
 typedef struct s_game
@@ -426,8 +428,8 @@ typedef struct s_game
 } t_game;
 ```
 
-*Good to know:*
-- **t_game** is the central structure that stores everything happening in the game. Interacting with this structure gives you full access to game data like team status, units, and actions.
+> [!TIP]
+> `t_game` is the central structure that stores everything happening in the game. Interacting with this structure gives you full access to game data like team status, units, and actions.
 
 <!-- Tabs 
 <div class="tabs">

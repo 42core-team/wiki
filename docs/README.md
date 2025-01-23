@@ -23,6 +23,7 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 - Once the invites are out head into you **inbox** on GitHub and accept the **invite** to your teams repository.
 
 ### 2. Clone Your Team's Repository 🖥️
+> [!WARNING]
 > When cloning with SSH you might need to push from a terminal from outside the Dev Container for it to work
 - Open a terminal and run:
 	```bash
@@ -57,6 +58,7 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 - In the VSCode terminal, the message **"Crazy CORE Bot"** should be printed continuously.
 
 ### 8. Start Developing 💻
+> [!INFO]
 > When running make again you might have to reload the visualizer page for it to work!
 - Navigate to the `src/` folder inside the container (Every .c file in there should get compiled).
 
@@ -64,7 +66,7 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 
 
 ## 📝 Example Code
-> Here's a simple example bot to get you started.
+Here's a simple example bot to get you started:
 
 ```c
 void	ft_user_loop(void *data)
@@ -79,18 +81,19 @@ void	ft_user_loop(void *data)
 
 	ft_create_type_id(UNIT_WARRIOR); // try to create a warrior
 
-	int i = -1;
-	while (units[++i]) // loop through every of our units
+	int i = 0;
+	while (units[i]) // loop through every of our units
 	{
 		t_obj *curr = units[i];
 		if (curr->s_unit.type_id == UNIT_WARRIOR) // if the unit is a warrior
 		{
-			t_obj *war = ft_get_nearest_opponent_unit(curr); // try to get the closest core to current unit
-			if (war)
-				ft_travel_attack(curr, war); // travel and then attack to the obj
+			t_obj *enemy = ft_get_nearest_opponent_unit(curr); // try to get the closest core to current unit
+			if (enemy)
+				ft_travel_attack(curr, enemy); // travel and then attack to the obj
 			else
 				ft_travel_attack(curr, enemy_core);
 		}
+		i++;
 	}
 
 	free(units);

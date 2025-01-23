@@ -3,7 +3,6 @@
 	--heading-h5-font-size: 1rem;
 }
 
-
 /* Style the tab links */
 .tabs {
 	overflow: hidden;
@@ -75,4 +74,15 @@
 
 *::-webkit-scrollbar {
 	width: 12px;
+}
+
+.markdown-section h3 code,
+.markdown-section h4 code,
+.markdown-section h5 code {
+	white-space: wrap !important;
+}
+
+.alert {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }

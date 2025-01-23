@@ -13,8 +13,6 @@ To start building your own CORE bot, ensure you've completed the following prere
    - You will receive an invite link to your dedicated CORE repository on GitHub.
    - This invite will be sent once you're registered and the event is about to begin.
 
----
-
 ## 🛠️ CORE Repository Setup Guide
 
 Follow these steps to set up your development environment using GitHub, Docker, and Visual Studio Code.
@@ -24,7 +22,7 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 
 ### 2. Clone Your Team's Repository 🖥️
 > [!WARNING]
-> When cloning with SSH you might need to push from a terminal from outside the Dev Container for it to work
+> If you want to use SSH, you have to use a terminal, that is not in the Dev Container.
 - Open a terminal and run:
 	```bash
 	git clone <your-repo-url>
@@ -59,7 +57,7 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 
 ### 8. Start Developing 💻
 > [!INFO]
-> When running make again you might have to reload the visualizer page for it to work!
+> After running make again you might have to reload the visualizer page for it to work!
 - Navigate to the `src/` folder inside the container (Every .c file in there should get compiled).
 
 🎉 **You are now ready to start coding!** 😎

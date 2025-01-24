@@ -5,10 +5,9 @@ In this barren world, where survival is the ultimate currency, only a handful of
 
 ## **⚔️ Warrior: The Vanguard of Survival**
 
-<p align="center">
-  <img src="./images/goblin_basic.png"/>
-  <img src="./images/skeleton_basic.png"/>
-</p>
+![](./images/goblin_basic.png)
+![](./images/skeleton_basic.png)
+
 
 
 > *"Where others see chaos, I see opportunity. My blade shall carve the future from the ruins of the past."*
@@ -22,10 +21,8 @@ The Warrior is the embodiment of raw strength and relentless determination. Forg
 
 ## **⛏️ Worker: The Relentless Miner**
 
-<p align="center">
-  <img src="./images/goblin_basic.png"/>
-  <img src="./images/skeleton_basic.png"/>
-</p>
+![](./images/goblin_basic.png)
+![](./images/skeleton_basic.png)
 
 > *"Dig deep, dig fast. The earth holds the secrets we need, and I will uncover them before the vultures circle overhead."*
 
@@ -38,10 +35,8 @@ The Worker is the backbone of every clan, tirelessly extracting the precious rem
 
 ## **🛡️ Tank: The Juggernaut**
 
-<p align="center">
-  <img src="./images/goblin_tank.png"/>
-  <img src="./images/skeleton_tank.png"/>
-</p>
+![](./images/goblin_tank.png)
+![](./images/skeleton_tank.png)
 
 > *"You can try to stop me, but you'll need more than what you've got. Bring it on."*
 
@@ -54,10 +49,8 @@ The Tank is a walking fortress, built to withstand the harshest blows the wastel
 
 ## **🏹 Archer: The Shadow of Precision**
 
-<p align="center">
-  <img src="./images/goblin_basic.png"/>
-  <img src="./images/skeleton_basic.png"/>
-</p>
+![](./images/goblin_basic.png)
+![](./images/skeleton_basic.png)
 
 > *"From the shadows, I see all. You won’t see me—but you'll feel me."*
 
@@ -70,10 +63,8 @@ In the wasteland, distance is safety, and the Archer is a master of exploiting t
 
 ## **💊 Healer: The Beacon of Hope**
 
-<p align="center">
-  <img src="./images/goblin_healer.png"/>
-  <img src="./images/skeleton_healer.png"/>
-</p>
+![](./images/goblin_healer.png)
+![](./images/skeleton_healer.png)
 
 > *"Even in a world as broken as this, I refuse to let the light of life extinguish completely."*
 

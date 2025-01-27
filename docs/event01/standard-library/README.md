@@ -183,14 +183,15 @@ Represents the entire game state, containing everything from status to teams, co
 ```c
 typedef struct s_game
 {
-	t_status status;             // Current game status (OK, Paused, End, etc.)
-	t_config config;             // Game configuration (map size, teams, units, etc.)
-	unsigned long my_team_id;    // ID of your team
-	t_team **teams;              // Pointer to all teams in the game
-	t_obj **cores;               // Pointer to all cores
-	t_obj **resources;           // Pointer to all resources
-	t_obj **units;               // Pointer to all units
-	t_actions actions;           // List of actions (create, travel, attack)
+	t_status status;             	// Current game status (OK, Paused, End, etc.)
+	unsigned long elapsed_ticks;	// The elapsed ticks since the game started.
+	t_config config;            	// Game configuration (map size, teams, units, etc.)
+	unsigned long my_team_id;    	// ID of your team
+	t_team **teams;              	// Pointer to all teams in the game
+	t_obj **cores;               	// Pointer to all cores
+	t_obj **resources;           	// Pointer to all resources
+	t_obj **units;               	// Pointer to all units
+	t_actions actions;           	// List of actions (create, travel, attack)
 } t_game;
 ```
 
@@ -203,13 +204,15 @@ Represents the game's configuration, containing global settings like map size an
 ```c
 typedef struct s_config
 {
-	unsigned long height;         // Map height
-	unsigned long width;          // Map width
-	unsigned long idle_income;    // Income generated while idle
-	unsigned long core_hp;        // Health points for cores
-	t_team_config *teams;         // Pointer to the team configurations
-	t_unit_config *units;         // Pointer to the unit configurations
-	t_resource_config *resources; // Pointer to the resource configurations
+	unsigned long height;		// The height of the map.
+	unsigned long width;		// The width of the map.
+	unsigned long idle_income;	// How much idle income you get every second.
+	unsigned long idle_income_timeout; // How many ticks you get idle income.
+	unsigned long core_hp;		// How much healthpoints a core has at the start of the game.
+	unsigned long resource_spawn_timeout;	// How many ticks new resources spawn.
+	t_team_config *teams;	// List of all teams with their id and name. The array is terminated by an element with id 0.
+	t_unit_config *units;	// List of all unit types that are available in the game. The array is terminated by an element
+	t_resource_config *resources;	// List of all resource types that are available in the game. The array is terminated by an element with type_id 0.
 } t_config;
 ```
 
@@ -308,7 +311,9 @@ typedef enum e_unit_type
 {
 	UNIT_WARRIOR = 1,           // Combat unit
 	UNIT_WORKER = 2,            // Resource-gathering unit
-	...
+	UNIT_TANK = 3,				// Big chonk
+	UNIT_ARCHER = 4,			// Long distance pew pew
+	UNIT_HEALER = 5				// Well.. he be healing
 } t_unit_type;
 ```
 
@@ -376,3 +381,33 @@ typedef enum e_obj_type
 	OBJ_CORE,
 	OBJ_RESOURCE
 } t_obj_type;
+
+typedef struct s_action_create
+{
+	unsigned long type_id;
+} t_action_create;
+
+typedef struct s_action_travel
+{
+	unsigned long id;
+	bool is_vector;
+	long x;
+	long y;
+} t_action_travel;
+
+typedef struct s_action_attack
+{
+	unsigned long attacker_id;
+	unsigned long target_id;
+} t_action_attack;
+
+typedef struct s_actions
+{
+	t_action_create *creates;
+	unsigned int creates_count;
+	t_action_travel *travels;
+	unsigned int travels_count;
+	t_action_attack *attacks;
+	unsigned int attacks_count;
+} t_actions;
+

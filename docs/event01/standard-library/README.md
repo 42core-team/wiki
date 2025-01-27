@@ -411,3 +411,4 @@ typedef struct s_actions
 	unsigned int attacks_count;
 } t_actions;
 
+t_obj	*ft_get_nearest_team_unit(t_obj *unit);

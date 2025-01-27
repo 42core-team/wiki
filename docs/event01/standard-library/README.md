@@ -96,6 +96,9 @@ Returns an **allocated** null-terminated array of pointers to all opponent units
 > [!WARNING]
 > Don't forget to free the array after using it!
 
+#### `t_obj	*ft_get_nearest_team_unit(t_obj *unit);`
+Returns a reference to the closest team unit from `t_obj *unit`'s position.
+
 #### 🔍 `t_obj *ft_get_nearest_unit(t_obj *unit);`
 Returns a reference to the closest unit to `t_obj *unit` (can be from your team).
 
@@ -280,6 +283,19 @@ typedef enum e_obj_type
 } t_obj_state;
 ```
 
+### 🔗 `typedef enum e_status {} t_status;`
+Represents the current state of the game.
+
+```c
+typedef enum e_status
+{
+	STATUS_OK = 0,				// The game is running
+	STATUS_PAUSED = 1,			// The game is paused
+	STATUS_END = 2,				// The game is over
+	STATUS_WAIT_FOR_CLIENTS = 3	// The game is waiting for clients to connect.
+} t_status;
+```
+
 ## Units
 ### 🛠️ `typedef struct s_unit_config {} t_unit_config;`
 Defines the configuration for units, including their stats and abilities.
@@ -361,46 +377,12 @@ typedef struct s_team
 > [!TIP]
 > Balance is crucial for determining whether you can create new units or take certain actions. (Or just spam spawn the units but keep in mind that it's better having a logic behind buying units)
 
+## Action structs
 
-# Missing stuff (align this right)
-typedef enum e_status
-{
-	/// @brief The game is running.
-	STATUS_OK = 0,
-	/// @brief The game is paused.
-	STATUS_PAUSED = 1,
-	/// @brief The game is over.
-	STATUS_END = 2,
-	/// @brief The game is waiting for clients to connect.
-	STATUS_WAIT_FOR_CLIENTS = 3
-} t_status;
+### 💥 `typedef struct s_action_create {} t_action_create;`
+Struct with every action that will be send to the server by the con lib
 
-typedef enum e_obj_type
-{
-	OBJ_UNIT,
-	OBJ_CORE,
-	OBJ_RESOURCE
-} t_obj_type;
-
-typedef struct s_action_create
-{
-	unsigned long type_id;
-} t_action_create;
-
-typedef struct s_action_travel
-{
-	unsigned long id;
-	bool is_vector;
-	long x;
-	long y;
-} t_action_travel;
-
-typedef struct s_action_attack
-{
-	unsigned long attacker_id;
-	unsigned long target_id;
-} t_action_attack;
-
+```c
 typedef struct s_actions
 {
 	t_action_create *creates;
@@ -410,6 +392,38 @@ typedef struct s_actions
 	t_action_attack *attacks;
 	unsigned int attacks_count;
 } t_actions;
+```
 
-t_obj	*ft_get_nearest_team_unit(t_obj *unit);
+### 💥 `typedef struct s_action_create {} t_action_create;`
+Raw create action struct that the connection lib handles and sends to the server to tell it to create a unit
 
+```c
+typedef struct s_action_create
+{
+	unsigned long type_id;
+} t_action_create;
+```
+
+### 💥 `typedef struct s_action_travel {} t_action_travel;`
+Raw travel action struct that tells the server to move a unit to a specific pos if is_vector is false, otherwise in just the given direction.
+
+```c
+typedef struct s_action_travel
+{
+	unsigned long id;
+	bool is_vector;
+	long x;
+	long y;
+} t_action_travel;
+```
+
+### 💥 `typedef struct s_action_travel {} t_action_travel;`
+Raw attack action struct that tells the server who wants to attack who.
+
+```c
+typedef struct s_action_attack
+{
+	unsigned long attacker_id;
+	unsigned long target_id;
+} t_action_attack;
+```

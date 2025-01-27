@@ -96,6 +96,9 @@ Returns an **allocated** null-terminated array of pointers to all opponent units
 > [!WARNING]
 > Don't forget to free the array after using it!
 
+#### `t_obj	*ft_get_nearest_team_unit(t_obj *unit);`
+Returns a reference to the closest team unit from `t_obj *unit`'s position.
+
 #### 🔍 `t_obj *ft_get_nearest_unit(t_obj *unit);`
 Returns a reference to the closest unit to `t_obj *unit` (can be from your team).
 
@@ -183,14 +186,15 @@ Represents the entire game state, containing everything from status to teams, co
 ```c
 typedef struct s_game
 {
-	t_status status;             // Current game status (OK, Paused, End, etc.)
-	t_config config;             // Game configuration (map size, teams, units, etc.)
-	unsigned long my_team_id;    // ID of your team
-	t_team **teams;              // Pointer to all teams in the game
-	t_obj **cores;               // Pointer to all cores
-	t_obj **resources;           // Pointer to all resources
-	t_obj **units;               // Pointer to all units
-	t_actions actions;           // List of actions (create, travel, attack)
+	t_status status;             	// Current game status (OK, Paused, End, etc.)
+	unsigned long elapsed_ticks;	// The elapsed ticks since the game started.
+	t_config config;            	// Game configuration (map size, teams, units, etc.)
+	unsigned long my_team_id;    	// ID of your team
+	t_team **teams;              	// Pointer to all teams in the game
+	t_obj **cores;               	// Pointer to all cores
+	t_obj **resources;           	// Pointer to all resources
+	t_obj **units;               	// Pointer to all units
+	t_actions actions;           	// List of actions (create, travel, attack)
 } t_game;
 ```
 
@@ -203,13 +207,15 @@ Represents the game's configuration, containing global settings like map size an
 ```c
 typedef struct s_config
 {
-	unsigned long height;         // Map height
-	unsigned long width;          // Map width
-	unsigned long idle_income;    // Income generated while idle
-	unsigned long core_hp;        // Health points for cores
-	t_team_config *teams;         // Pointer to the team configurations
-	t_unit_config *units;         // Pointer to the unit configurations
-	t_resource_config *resources; // Pointer to the resource configurations
+	unsigned long height;		// The height of the map.
+	unsigned long width;		// The width of the map.
+	unsigned long idle_income;	// How much idle income you get every second.
+	unsigned long idle_income_timeout; // How many ticks you get idle income.
+	unsigned long core_hp;		// How much healthpoints a core has at the start of the game.
+	unsigned long resource_spawn_timeout;	// How many ticks new resources spawn.
+	t_team_config *teams;	// List of all teams with their id and name. The array is terminated by an element with id 0.
+	t_unit_config *units;	// List of all unit types that are available in the game. The array is terminated by an element
+	t_resource_config *resources;	// List of all resource types that are available in the game. The array is terminated by an element with type_id 0.
 } t_config;
 ```
 
@@ -277,6 +283,19 @@ typedef enum e_obj_type
 } t_obj_state;
 ```
 
+### 🔗 `typedef enum e_status {} t_status;`
+Represents the current state of the game.
+
+```c
+typedef enum e_status
+{
+	STATUS_OK = 0,				// The game is running
+	STATUS_PAUSED = 1,			// The game is paused
+	STATUS_END = 2,				// The game is over
+	STATUS_WAIT_FOR_CLIENTS = 3	// The game is waiting for clients to connect.
+} t_status;
+```
+
 ## Units
 ### 🛠️ `typedef struct s_unit_config {} t_unit_config;`
 Defines the configuration for units, including their stats and abilities.
@@ -308,7 +327,9 @@ typedef enum e_unit_type
 {
 	UNIT_WARRIOR = 1,           // Combat unit
 	UNIT_WORKER = 2,            // Resource-gathering unit
-	...
+	UNIT_TANK = 3,				// Big chonk
+	UNIT_ARCHER = 4,			// Long distance pew pew
+	UNIT_HEALER = 5				// Well.. he be healing
 } t_unit_type;
 ```
 
@@ -355,3 +376,54 @@ typedef struct s_team
 
 > [!TIP]
 > Balance is crucial for determining whether you can create new units or take certain actions. (Or just spam spawn the units but keep in mind that it's better having a logic behind buying units)
+
+## Action structs
+
+### 💥 `typedef struct s_action_create {} t_action_create;`
+Struct with every action that will be send to the server by the con lib
+
+```c
+typedef struct s_actions
+{
+	t_action_create *creates;
+	unsigned int creates_count;
+	t_action_travel *travels;
+	unsigned int travels_count;
+	t_action_attack *attacks;
+	unsigned int attacks_count;
+} t_actions;
+```
+
+### 💥 `typedef struct s_action_create {} t_action_create;`
+Raw create action struct that the connection lib handles and sends to the server to tell it to create a unit
+
+```c
+typedef struct s_action_create
+{
+	unsigned long type_id;
+} t_action_create;
+```
+
+### 💥 `typedef struct s_action_travel {} t_action_travel;`
+Raw travel action struct that tells the server to move a unit to a specific pos if is_vector is false, otherwise in just the given direction.
+
+```c
+typedef struct s_action_travel
+{
+	unsigned long id;
+	bool is_vector;
+	long x;
+	long y;
+} t_action_travel;
+```
+
+### 💥 `typedef struct s_action_travel {} t_action_travel;`
+Raw attack action struct that tells the server who wants to attack who.
+
+```c
+typedef struct s_action_attack
+{
+	unsigned long attacker_id;
+	unsigned long target_id;
+} t_action_attack;
+```

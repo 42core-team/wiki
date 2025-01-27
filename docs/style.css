@@ -86,3 +86,36 @@
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
+
+.version-selector {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.version-selector-label {
+	margin-right: 0.5rem;
+	font-weight: bold;
+	color: var(--base-color);
+}
+
+.version-selector select {
+	padding: 0.1rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: #fff;
+	color: #333;
+	cursor: pointer;
+	transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.version-selector select:focus {
+	border-color: var(--theme-color);
+	box-shadow: 0 0 5px rgba(98, 0, 234, 0.5);
+	outline: none;
+}
+
+.app-name>small {
+	display: none;
+}

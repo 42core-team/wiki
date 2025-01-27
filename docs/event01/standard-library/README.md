@@ -355,3 +355,24 @@ typedef struct s_team
 
 > [!TIP]
 > Balance is crucial for determining whether you can create new units or take certain actions. (Or just spam spawn the units but keep in mind that it's better having a logic behind buying units)
+
+
+# Missing stuff (align this right)
+typedef enum e_status
+{
+	/// @brief The game is running.
+	STATUS_OK = 0,
+	/// @brief The game is paused.
+	STATUS_PAUSED = 1,
+	/// @brief The game is over.
+	STATUS_END = 2,
+	/// @brief The game is waiting for clients to connect.
+	STATUS_WAIT_FOR_CLIENTS = 3
+} t_status;
+
+typedef enum e_obj_type
+{
+	OBJ_UNIT,
+	OBJ_CORE,
+	OBJ_RESOURCE
+} t_obj_type;

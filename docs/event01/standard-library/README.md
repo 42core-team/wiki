@@ -87,23 +87,28 @@ Returns a reference to the closest core from `t_obj *obj`'s position.
 > Functions to retrieve team units, enemy units, closest unit,...
 
 #### 👥 `t_obj **ft_get_my_units();`
-Returns an **allocated** null-terminated array of pointers to your team's units.
+Returns an **allocated** null-terminated array of pointers to your team's alive units.
 > [!WARNING]
 > Don't forget to free the array after using it!
 
 #### 👥 `t_obj **ft_get_opponent_units();`
-Returns an **allocated** null-terminated array of pointers to all opponent units.
+Returns an **allocated** null-terminated array of pointers to alive opponent units.
 > [!WARNING]
 > Don't forget to free the array after using it!
 
+#### 👥 ´t_obj **ft_get_all_units()´
+Returns a null-terminated array of pointers to all units currently in-game.
+> [!WARNING]
+> Do not to free the array after using it!
+
 #### `t_obj	*ft_get_nearest_team_unit(t_obj *unit);`
-Returns a reference to the closest team unit from `t_obj *unit`'s position.
+Returns a reference to the closest alive team unit from `t_obj *unit`'s position.
 
 #### 🔍 `t_obj *ft_get_nearest_unit(t_obj *unit);`
-Returns a reference to the closest unit to `t_obj *unit` (can be from your team).
+Returns a reference to the closest alive unit to `t_obj *unit` (can be from your team).
 
 #### 🔍 `t_obj *ft_get_nearest_opponent_unit(t_obj *unit);`
-Returns a reference to the closest opponent unit to `t_obj *unit` (cannot be from your team).
+Returns a reference to the closest alive opponent unit to `t_obj *unit` (cannot be from your team).
 
 ### 📦💡 Resource
 > Functions to retrieve resources

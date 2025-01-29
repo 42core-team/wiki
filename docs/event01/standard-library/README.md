@@ -277,7 +277,7 @@ typedef enum e_obj_type
 ```
 
 ### 🔗 `typedef enum e_obj_state {} t_obj_state;`
-Represents the types of objects in the game.
+Represents the state of objects in the game.
 
 ```c
 typedef enum e_obj_type
@@ -289,7 +289,7 @@ typedef enum e_obj_type
 ```
 
 ### 🔗 `typedef enum e_status {} t_status;`
-Represents the current state of the game.
+Represents the current status of the game.
 
 ```c
 typedef enum e_status

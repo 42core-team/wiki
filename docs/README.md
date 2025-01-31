@@ -62,6 +62,11 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 
 🎉 **You are now ready to start coding!** 😎
 
+### 9. Play and test against other Teams 🎮
+If the default test bot is to boring and you always win, feel free to share your compiled
+bot with other teams and play against them. Of course, you can't force them but it might
+benefit both of you to see your bots in _real_ action.
+
 
 ## 📝 Example Code
 Here's a simple example bot to get you started:
@@ -71,10 +76,10 @@ void	ft_user_loop(void *data)
 {
 	(void)data;
 
-    // get all units of own team
+	// get all units of own team
 	t_obj **units = ft_get_my_units();
 
-    // get the first opponent core there is
+	// get the first opponent core there is
 	t_obj *enemy_core = ft_get_first_opponent_core();
 
 	ft_create_type_id(UNIT_WARRIOR); // try to create a warrior
@@ -100,9 +105,9 @@ void	ft_user_loop(void *data)
 
 <button onclick="inDepthTutorial()" id="in-depth">Check out the in-depth tutorial for the library</button>
 
-# [📚 Standard Library](./standard-library/README.md)
+# [📚 Standard Library](/event01/standard-library/README.md)
 
-# [👥 Units](./units/README.md)
+# [👥 Units](/event01/units/README.md)
 
-# [❓ FAQ](./faq.md)
+# [❓ FAQ](event01/faq.md)
 

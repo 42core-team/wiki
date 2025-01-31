@@ -62,6 +62,11 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 
 🎉 **You are now ready to start coding!** 😎
 
+### 9. Play and test against other Teams 🎮
+If the default test bot is to boring and you always win, feel free to share your compiled
+bot with other teams and play against them. Of course, you can't force them but it might
+benefit both of you to see your bots in _real_ action.
+
 
 ## 📝 Example Code
 Here's a simple example bot to get you started:

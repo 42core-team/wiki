@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>CORE</title>
+  <title>CORE: Wiki</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
+  <meta name="description" content="The offificial documentation for CORE Game.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" media="(prefers-color-scheme: dark)"
     href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
@@ -15,8 +15,8 @@
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-versioned-plugin@0.0.1/styles.css">
   <script>
-    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
-    posthog.init('phc_O9e7yNVtk8Olh9AktTjPsVwZsbS7fLOPdNY1jTAijpr', {api_host: 'https://eu.i.posthog.com'})
+    !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.crossOrigin = "anonymous", p.async = !0, p.src = s.api_host.replace(".i.posthog.com", "-assets.i.posthog.com") + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+    posthog.init('phc_O9e7yNVtk8Olh9AktTjPsVwZsbS7fLOPdNY1jTAijpr', { api_host: 'https://eu.i.posthog.com' })
   </script>
 </head>
 
@@ -26,10 +26,11 @@
     window.$docsify = {
       name: 'CORE Documentation',
       repo: '',
-      // versions: [
-      //   { folder: 'event00', label: 'Event 00', default: false },
-      //   { folder: 'event01', label: 'Event 01', default: true }
-      // ],
+      versions: [
+        { folder: 'event00', label: 'Season 1', default: false },
+        { folder: 'event01', label: 'Season 2', default: false },
+        { folder: 'event02', label: 'Season 2 Reloaded', default: true },
+      ],
       versionSelectorLabel: 'Version',
       footer: {
         text: 'Official CORE Documentation', // Customize footer text
@@ -42,15 +43,22 @@
       search: {
         maxAge: 86400000,
         paths: [
-          '/README.md',
-          '/event01/standard-library/README.md',
-          '/event01/units/README.md',
-
+          '**/*',
         ],
         placeholder: 'Type to search (currently wip)',
         noData: 'No Results! :c',
         depth: 6,
-        hideOtherSidebarContent: false
+        hideOtherSidebarContent: false,
+        paths: [
+          '**/*',
+        ]
+      },
+      versionedPlugin: {
+        onVersionChange: function (version) {
+          const currentPath = window.location.pathname.split('/').slice(2).join('/'); // Get the current subpath
+          const newPath = `/${version.folder}/${currentPath}`; // Construct the new path
+          window.location.href = newPath;
+        }
       }
     }
 
@@ -130,7 +138,7 @@
   <script src="//unpkg.com/docsify-mermaid/dist/docsify-mermaid.min.js"></script>
   <script src="//unpkg.com/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
   <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
-  <!--<script src="https://cdn.jsdelivr.net/npm/docsify-versioned-plugin@0.0.1/index.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/docsify-versioned-plugin@0.0.1/index.js"></script>
 
 </body>
 

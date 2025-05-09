@@ -2,8 +2,6 @@
 
 In this barren world, where survival is the ultimate currency, only a handful of specialized individuals have risen to the challenge. Each unit carries the weight of its past and the hope of a better future—or at least the next meal. Meet the elite forces of the wasteland: the ones who fight, build, and heal in a world that has forgotten mercy.
 
-![](./images/stats.png)
-
 ## **⚔️ Warrior: The Vanguard of Survival**
 
 ![](./images/goblin_basic.png)

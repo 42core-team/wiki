@@ -1,6 +1,9 @@
-FROM nginx:latest
+FROM node:latest
 
-COPY configs/nginx.conf /etc/nginx/conf.d/default.conf
-COPY docs /usr/share/nginx/html
+WORKDIR /docs
+COPY docs .
 
-EXPOSE 80/tcp
+RUN npm install -g docsify-cli@latest
+
+EXPOSE 3000/tcp
+ENTRYPOINT docsify serve .

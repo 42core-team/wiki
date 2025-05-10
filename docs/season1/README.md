@@ -99,7 +99,7 @@ void	ft_user_loop(void *data)
 
 <button onclick="inDepthTutorial()" id="in-depth">Check out the in-depth tutorial for the library</button>
 
-# [📚 Standard Library](./standard-library/README.md)
+# [📚 Standard Library](standard-library/)
 
 
 # [❓ FAQ](../faq.md)

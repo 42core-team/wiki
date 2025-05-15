@@ -25,44 +25,18 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 > If you want to use SSH, you have to use a terminal, that is not in the Dev Container.
 - Open a terminal and run:
 	```bash
-	git clone <your-repo-url>
+	git clone <your repo link>
 	```
-- After cloning, open the project in **Visual Studio Code (VSCode)**.
 
-### 3. Install Dev Container Extension 🔧
-- Install the **Dev Container Extension** for VSCode:
-	- Open the extensions panel in VSCode.
-	- Search for **Remote - Containers**.
-	- Click **Install**.
+### 3. After cloning, follow the guide on the README of your teams repository.
+Basically it's just typing `make devcontainer` inside your cloned repo inside a terminal. But for more information check out the teams repo README.
 
-### 4. Start Docker 🐋
-- Ensure the **Docker Engine** is running on your machine. You can download Docker [here](https://www.docker.com/products/docker-desktop).
-
-### 5. Reopen in Container 🔄
-- In VSCode, head to the bottom-left corner and click the **Docker** icon (or the square icon with arrows).
-- A menu will pop up. Click **Reopen in Container**.
-- VSCode will automatically handle the setup and container initialization.
-
-### 6. Wait for the Setup to Complete ⏳
-- Allow VSCode to download and set up the development environment inside the container. This process may take a few minutes.
-
-### 7. Verify the Setup ✅
-- Open a terminal in VSCode and run the `make` command:
-	```bash
-	make
-	```
-- Open your browser and type `localhost` (no port number) in the address bar.
-- You should see the **Visualizer** in your browser.
-- In the VSCode terminal, the message **"Crazy CORE Bot"** should be printed continuously.
-
-### 8. Start Developing 💻
-> [!INFO]
-> After running make again you might have to reload the visualizer page for it to work!
+### 4. Start Developing 💻
 - Navigate to the `src/` folder inside the container (Every .c file in there should get compiled).
 
 🎉 **You are now ready to start coding!** 😎
 
-### 9. Play and test against other Teams 🎮
+### Play and test against other Teams 🎮
 If the default test bot is to boring and you always win, feel free to share your compiled
 bot with other teams and play against them. Of course, you can't force them but it might
 benefit both of you to see your bots in _real_ action.
@@ -105,9 +79,9 @@ void	ft_user_loop(void *data)
 
 <button onclick="inDepthTutorial()" id="in-depth">Check out the in-depth tutorial for the library</button>
 
-# [📚 Standard Library](./standard-library/README.md)
+# [📚 Standard Library](standard-library/)
 
-# [👥 Units](./units/README.md)
+# [👥 Units](units/)
 
-# [❓ FAQ](./faq.md)
+# [❓ FAQ](../faq.md)
 

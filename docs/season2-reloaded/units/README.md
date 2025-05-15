@@ -2,8 +2,6 @@
 
 In this barren world, where survival is the ultimate currency, only a handful of specialized individuals have risen to the challenge. Each unit carries the weight of its past and the hope of a better future—or at least the next meal. Meet the elite forces of the wasteland: the ones who fight, build, and heal in a world that has forgotten mercy.
 
-![](./images/stats.png)
-
 ## **⚔️ Warrior: The Vanguard of Survival**
 
 ![](./images/goblin_basic.png)
@@ -76,6 +74,6 @@ The Healer is a rare soul, clinging to the shreds of humanity left in the wastel
 - **Backstory**: Healers are remnants of the medical community, their compassion an anomaly in a world driven by greed and violence. Many see them as beacons of hope; others see them as naive fools destined to be swallowed by the wasteland.
 
 
-## **⚡ Together, They Forge the Future**
+# **⚡ Together, They Forge the Future**
 
 > In a world where trust is a liability, these units form bonds stronger than steel. Each carries the weight of their past, but together, they are more than survivors—they are the architects of a new era. Whether fighting for resources or striving to carve out a patch of stability in the chaos, they are the last hope of the wasteland.

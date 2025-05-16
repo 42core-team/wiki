@@ -1,4 +1,5 @@
 # 🏠 The Art of CORE
+
 ## Welcome to the Official CORE Documentation 📚
 
 # 🚀 Getting Started with Your Own CORE Bot
@@ -6,7 +7,9 @@
 To start building your own CORE bot, ensure you've completed the following prerequisites:
 
 ### Prerequisites
+
 1. **Be a Registered CORE Participant/Team** ✨
+
    - You must be officially registered as a participant or part of a team in the CORE event (Slack).
 
 2. **Receive Your CORE Repository Invite** 📧
@@ -18,31 +21,37 @@ To start building your own CORE bot, ensure you've completed the following prere
 Follow these steps to set up your development environment using GitHub, Docker, and Visual Studio Code.
 
 ### 1. Get access to your repo 🍴
+
 - Once the invites are out head into you **inbox** on GitHub and accept the **invite** to your teams repository.
 
 ### 2. Clone Your Team's Repository 🖥️
+
 > [!WARNING]
 > If you want to use SSH, you have to use a terminal, that is not in the Dev Container.
+
 - Open a terminal and run:
-	```bash
-	git clone <your repo link>
-	```
+  ```bash
+  git clone <your repo link>
+  ```
 
 ### 3. After cloning, follow the guide on the README of your teams repository.
+
 Basically it's just typing `make devcontainer` inside your cloned repo inside a terminal. But for more information check out the teams repo README.
 
 ### 4. Start Developing 💻
+
 - Navigate to the `src/` folder inside the container (Every .c file in there should get compiled).
 
 🎉 **You are now ready to start coding!** 😎
 
 ### Play and test against other Teams 🎮
+
 If the default test bot is to boring and you always win, feel free to share your compiled
 bot with other teams and play against them. Of course, you can't force them but it might
 benefit both of you to see your bots in _real_ action.
 
-
 ## 📝 Example Code
+
 Here's a simple example bot to get you started:
 
 ```c
@@ -56,7 +65,7 @@ void	ft_user_loop(void *data)
     // get the first opponent core there is
 	t_obj *enemy_core = ft_get_first_opponent_core();
 
-	ft_create_type_id(UNIT_WARRIOR); // try to create a warrior
+	ft_create_type(UNIT_WARRIOR); // try to create a warrior
 
 	int i = 0;
 	while (units[i]) // loop through every of our units
@@ -84,4 +93,3 @@ void	ft_user_loop(void *data)
 # [👥 Units](units/)
 
 # [❓ FAQ](../faq.md)
-

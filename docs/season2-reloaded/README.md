@@ -2,6 +2,8 @@
 
 ## Welcome to the Official CORE Documentation 📚
 
+Read it carefully, there are many helpful tidbits hidden in here.
+
 # What is CORE?
 
 CORE is a programming competition where you can write a bot and compete against the bots made by other people. Each of you has a base on the map called your core, which is the place you need to protect as if it is destroyed you lose.
@@ -35,7 +37,7 @@ Follow these steps to set up your development environment using GitHub, Docker, 
 ### 2. Clone Your Team's Repository 🖥️
 
 > [!WARNING]
-> If you want to use SSH, you have to use a terminal, that is not in the Dev Container.
+> Cloning using another method than SSH can often lead to issues.
 
 - Open a terminal and run:
   ```bash

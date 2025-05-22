@@ -75,7 +75,7 @@ void	ft_user_loop(void *data)
 	// get the first opponent core there is
 	t_obj *enemy_core = ft_get_first_opponent_core();
 
-	ft_create_type(UNIT_WARRIOR); // try to create a warrior
+	ft_create_unit(UNIT_WARRIOR); // try to create a warrior
 
 	int i = 0;
 	while (units[i]) // loop through every of our units

@@ -6,6 +6,10 @@
 Those are all the functions currently available in the standart C lib for CORE.  
 Fell free to use all the functions available!
 
+> You can find the function implementations [here](https://github.com/42core-team/connection).
+
+> **The power is yours!** Almost all of these functions are just helpful abstractions, but you can get anything you want yourself by filtering through all of the always-up-to-date data in the *game struct*.
+
 # 🛠 Functions Overview
 
 ## ⚙️🔄 Init and Main Loop
@@ -63,16 +67,24 @@ Prints all available game information, including the game configuration, status,
 ## 🔍💻 Getter
 > Those are all the pre-defined functions and with those you cat get  varios things like the closest unit or your own team.
 
+#### 🏅 `t_obj *ft_get_obj_from_id(unsigned long id);`
+Returns a reference to any given t_obj in-game based on id, or NULL if nothing was found.
+
 ### 🤝💪 Team and Core
 > Functions to retrieve data about teams and cores
 
 #### 🏅 `t_team *ft_get_my_team();`
 Returns a reference to your team’s struct (see [`t_team`](#🏅-typedef-struct-s_team-t_team)), allowing you to access all its information.
 
----
-
 #### 🥇 `t_team *ft_get_first_opponent_team();`
 Returns a reference to the first opponent team's struct.
+
+---
+
+#### 🐊 `t_obj	**ft_get_cores(void);`
+Returns an **allocated** null-terminated array of pointers to all alive cores.
+> [!WARNING]
+> Don't forget to free the array after using it!
 
 #### 🏰 `t_obj *ft_get_my_core();`
 Returns a reference to your core’s struct.
@@ -86,6 +98,11 @@ Returns a reference to the closest core from `t_obj *obj`'s position.
 ### 🛡️⚔️ Unit
 > Functions to retrieve team units, enemy units, closest unit,...
 
+#### 🐊 `t_obj	**ft_get_units(void);`
+Returns an **allocated** null-terminated array of pointers to all alive units.
+> [!WARNING]
+> Don't forget to free the array after using it!
+
 #### 👥 `t_obj **ft_get_my_units();`
 Returns an **allocated** null-terminated array of pointers to your team's alive units.
 > [!WARNING]
@@ -95,11 +112,6 @@ Returns an **allocated** null-terminated array of pointers to your team's alive 
 Returns an **allocated** null-terminated array of pointers to alive opponent units.
 > [!WARNING]
 > Don't forget to free the array after using it!
-
-#### 👥 ´t_obj **ft_get_all_units()´
-Returns a null-terminated array of pointers to all units currently in-game.
-> [!WARNING]
-> Do not to free the array after using it!
 
 #### `t_obj	*ft_get_nearest_team_unit(t_obj *unit);`
 Returns a reference to the closest alive team unit from `t_obj *unit`'s position.
@@ -113,6 +125,11 @@ Returns a reference to the closest alive opponent unit to `t_obj *unit` (cannot 
 ### 📦💡 Resource
 > Functions to retrieve resources
 
+#### 🐊 `t_obj	**ft_get_resources(void);`
+Returns an **allocated** null-terminated array of pointers to all alive resources.
+> [!WARNING]
+> Don't forget to free the array after using it!
+
 #### 🌾 `t_obj *ft_get_nearest_resource(t_obj *unit);`
 Returns a reference to the closest resource to `t_obj *unit`.
 
@@ -120,9 +137,6 @@ Returns a reference to the closest resource to `t_obj *unit`.
 > Other useful Functions
 #### 🛠️ `t_unit_config *ft_get_unit_config(t_unit_type type);`
 Returns the configuration of a unit based on its type.
-
-#### 🏅 `t_obj *ft_get_obj_from_id(unsigned long id);`
-Returns a reference to any given t_obj in-game, or NULL if nothing was found.
 
 ## 📏 Utils
 > Utility functions
@@ -181,6 +195,81 @@ Commands a unit to travel to a target and attack it. Equivalent to calling `ft_t
 
 > Here you'll find the main data types and structures used in the game logic. These are essential for understanding how to interact with game elements, control units, and manage actions.
 
+## Objects
+
+### 🧩 `typedef struct s_obj {} t_obj;`
+Represents an object in the game, which could be a unit, core or resource.
+
+```c
+typedef struct s_obj
+{
+	t_obj_type type;                 // Object type (unit, core, or resource)
+	t_obj_state state;               // Object state (uninitialized, alive or dead)
+	void *data;                      // Your custom data - save anything you want here.
+
+	unsigned long id;                // Unique identifier
+	unsigned long x, y;              // Object's coordinates
+	unsigned long hp;                // Object's health points
+
+	union {                          // Type-specific details for cores or units
+		struct {
+			unsigned long team_id;   // Team identifier (for cores)
+		} s_core;
+
+		struct {
+			unsigned long type_id;   // Unit type identifier (for units)
+			unsigned long team_id;   // Team identifier (for units)
+		} s_unit;
+	};
+} t_obj;
+```
+
+> [!TIP]
+> - **Cores** belong to teams and are essential for the game's victory conditions (Your core has to be the last one alive to win the game).
+> - **Units** can be of different types and have specific stats like HP and position.
+> - **Resources** are critical for a team’s economic strength.
+> - When working on `t_obj`s, it's recommended to ensure they are currently alive.
+>	- They may be uninitialized immediately after creation, but the memory location will stay consistent forever. You can safely access their data field, state or type, but not their id, hp or coordinates.
+>	- They will stay available after death for memory management purposes.
+>	- If objects are not alive when you use them, behavior is undefined.
+
+### 🔗 `typedef enum e_obj_type {} t_obj_type;`
+Represents the types of objects in the game.
+
+```c
+typedef enum e_obj_type
+{
+	OBJ_UNIT,                    // A unit (e.g., warrior, worker)
+	OBJ_CORE,                    // A core (the base of a team)
+	OBJ_RESOURCE                 // A resource (e.g., minerals)
+} t_obj_type;
+```
+
+### 🔗 `typedef enum e_obj_state {} t_obj_state;`
+Represents the state of objects in the game.
+
+```c
+typedef enum e_obj_type
+{
+	STATE_UNINITIALIZED = 1,    // any data is still subject to change
+	STATE_ALIVE = 2,            // default state. normal object.
+	STATE_DEAD = 3              // dead unit / mined resource / ...
+} t_obj_state;
+```
+
+### 🔗 `typedef enum e_status {} t_status;`
+Represents the current status of the game.
+
+```c
+typedef enum e_status
+{
+	STATUS_OK = 0,				// The game is running
+	STATUS_PAUSED = 1,			// The game is paused
+	STATUS_END = 2,				// The game is over
+	STATUS_WAIT_FOR_CLIENTS = 3	// The game is waiting for clients to connect.
+} t_status;
+```
+
 ## Game and Configuration
 
 ### 🕹️ `typedef struct s_game {} t_game;`
@@ -224,83 +313,6 @@ typedef struct s_config
 } t_config;
 ```
 
-## Objects
-
-### 🧩 `typedef struct s_obj {} t_obj;`
-Represents an object in the game, which could be a unit, core or resource.
-
-```c
-typedef struct s_obj
-{
-	t_obj_type type;                 // Object type (unit, core, or resource)
-	t_obj_state state;               // Object state (uninitialized, alive or dead)
-	void *data;                      // Your custom data - save anything you want here.
-
-	unsigned long id;                // Unique identifier
-	unsigned long x, y;              // Object's coordinates
-	unsigned long hp;                // Object's health points
-
-	union {                          // Type-specific details for cores or units
-		struct {
-			unsigned long team_id;   // Team identifier (for cores)
-		} s_core;
-
-		struct {
-			unsigned long type_id;   // Unit type identifier (for units)
-			unsigned long team_id;   // Team identifier (for units)
-		} s_unit;
-	};
-} t_obj;
-```
-
-> [!TIP]
-> - **Cores** belong to teams and are essential for the game's victory conditions (Your core has to be the last one alive to win the game).
-> - **Units** can be of different types and have specific stats like HP and position.
-> - **Resources** are critical for a team’s economic strength.
-> - When working on `t_obj`s, it's recommended to ensure they are currently alive.
->	- They may be uninitialized immediately after creation, but the memory location will stay consistent forever.
->	- They will stay available after death for memory management purposes.
->	- If objects are not alive when you use them, behavior is undefined.
-
-
-
-### 🔗 `typedef enum e_obj_type {} t_obj_type;`
-Represents the types of objects in the game.
-
-```c
-typedef enum e_obj_type
-{
-	OBJ_UNIT,                    // A unit (e.g., warrior, worker)
-	OBJ_CORE,                    // A core (the base of a team)
-	OBJ_RESOURCE                 // A resource (e.g., minerals)
-} t_obj_type;
-```
-
-### 🔗 `typedef enum e_obj_state {} t_obj_state;`
-Represents the state of objects in the game.
-
-```c
-typedef enum e_obj_type
-{
-	STATE_UNINITIALIZED = 1,    // any data is still subject to change
-	STATE_ALIVE = 2,            // default state. normal object.
-	STATE_DEAD = 3              // dead unit / mined resource / ...
-} t_obj_state;
-```
-
-### 🔗 `typedef enum e_status {} t_status;`
-Represents the current status of the game.
-
-```c
-typedef enum e_status
-{
-	STATUS_OK = 0,				// The game is running
-	STATUS_PAUSED = 1,			// The game is paused
-	STATUS_END = 2,				// The game is over
-	STATUS_WAIT_FOR_CLIENTS = 3	// The game is waiting for clients to connect.
-} t_status;
-```
-
 ## Units
 ### 🛠️ `typedef struct s_unit_config {} t_unit_config;`
 Defines the configuration for units, including their stats and abilities.
@@ -330,11 +342,11 @@ Defines the different types of units.
 ```c
 typedef enum e_unit_type
 {
-	UNIT_WARRIOR = 1,           // Combat unit
-	UNIT_WORKER = 2,            // Resource-gathering unit
-	UNIT_TANK = 3,				// Big chonk
-	UNIT_ARCHER = 4,			// Long distance pew pew
-	UNIT_HEALER = 5				// Well.. he be healing
+	UNIT_WARRIOR = 1,
+	UNIT_WORKER = 2,
+	UNIT_TANK = 3,
+	UNIT_ARCHER = 4,
+	UNIT_HEALER = 5
 } t_unit_type;
 ```
 
@@ -375,60 +387,9 @@ Represents a team in the game.
 typedef struct s_team
 {
 	unsigned long id;            // Unique identifier for the team
-	unsigned long balance;       // Team's current balance (used for unit creation, etc.)
+	unsigned long balance;       // Team's current money amount (used for unit creation, etc.)
 } t_team;
 ```
 
 > [!TIP]
 > Balance is crucial for determining whether you can create new units or take certain actions. (Or just spam spawn the units but keep in mind that it's better having a logic behind buying units)
-
-## Action structs
-
-### 💥 `typedef struct s_action_create {} t_action_create;`
-Struct with every action that will be send to the server by the con lib
-
-```c
-typedef struct s_actions
-{
-	t_action_create *creates;
-	unsigned int creates_count;
-	t_action_travel *travels;
-	unsigned int travels_count;
-	t_action_attack *attacks;
-	unsigned int attacks_count;
-} t_actions;
-```
-
-### 💥 `typedef struct s_action_create {} t_action_create;`
-Raw create action struct that the connection lib handles and sends to the server to tell it to create a unit
-
-```c
-typedef struct s_action_create
-{
-	unsigned long type_id;
-} t_action_create;
-```
-
-### 💥 `typedef struct s_action_travel {} t_action_travel;`
-Raw travel action struct that tells the server to move a unit to a specific pos if is_vector is false, otherwise in just the given direction.
-
-```c
-typedef struct s_action_travel
-{
-	unsigned long id;
-	bool is_vector;
-	long x;
-	long y;
-} t_action_travel;
-```
-
-### 💥 `typedef struct s_action_travel {} t_action_travel;`
-Raw attack action struct that tells the server who wants to attack who.
-
-```c
-typedef struct s_action_attack
-{
-	unsigned long attacker_id;
-	unsigned long target_id;
-} t_action_attack;
-```

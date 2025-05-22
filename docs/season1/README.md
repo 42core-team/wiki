@@ -102,4 +102,4 @@ void	ft_user_loop(void *data)
 # [📚 Standard Library](standard-library/)
 
 
-# [❓ FAQ](../faq.md)
+# [❓ FAQ](faq.md)

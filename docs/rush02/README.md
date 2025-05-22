@@ -108,4 +108,4 @@ void	ft_user_loop(void *data)
 
 # [👥 Units](units/)
 
-# [❓ FAQ](../faq.md)
+# [❓ FAQ](faq.md)

@@ -2,6 +2,14 @@
 
 ## Welcome to the Official CORE Documentation 📚
 
+# What is CORE?
+
+CORE is a programming competition where you can write a bot and compete against the bots made by other people. Each of you has a base on the map called your core, which is the place you need to protect as if it is destroyed you lose.
+
+To avoid this, you can spawn a variety of units to defend against and attack your opponent. These all have different stats, abilities and drawbacks. To spawn them, you need money.
+
+You can receive money via idle income which you get automatically for a while at the start of the game, or by having your units attack the resources on the map. Good resource management is critical to creating a successful bot.
+
 # 🚀 Getting Started with Your Own CORE Bot
 
 To start building your own CORE bot, ensure you've completed the following prerequisites:
@@ -59,10 +67,10 @@ void	ft_user_loop(void *data)
 {
 	(void)data;
 
-    // get all units of own team
+	// get all units of own team
 	t_obj **units = ft_get_my_units();
 
-    // get the first opponent core there is
+	// get the first opponent core there is
 	t_obj *enemy_core = ft_get_first_opponent_core();
 
 	ft_create_type(UNIT_WARRIOR); // try to create a warrior
@@ -86,10 +94,32 @@ void	ft_user_loop(void *data)
 }
 ```
 
+The User Loop is called every game tick, so it's the perfect place to put your logic.
+
 <button onclick="inDepthTutorial()" id="in-depth">Check out the in-depth tutorial for the library</button>
 
-# [📚 Standard Library](standard-library/)
+# Tips & Tricks
 
-# [👥 Units](units/)
+> Be careful about attacking Ghosts! Object could be uninitialized or dead, so take care not to start your full assault on a unit thats already ascended into the afterlife.
 
-# [❓ FAQ](../faq.md)
+> Consider the powerful possibilities of the data field in every object! Here, you can save any data you want, allowing you to easily execute more detailed strategies and coordiante your troops efficiently! Just remember to free everything at the end.
+
+> If you can't find a standard library function to do what you're looking for, don't sweat it! Everything there is to know about the game at the current moment can be found in `the game struct`. Get any info you want yourself!
+
+> Be careful what you free! Some standard library functions need you to free their returned array, some don't! You never need to free anything in the game struct, and you never need to free a single `t_obj *` you haven't manually allocated yourself!
+
+### To win the event
+
+> Don't overcomplicate things! Simple but well-balanced bots may often reign over overcomplicated but ineffective bots.
+
+> Play against other players as often as possible!
+
+# Let's get started!
+
+## [📚 Standard Library](standard-library.md)
+
+## [👥 Unit Configs](unit-configs.md)
+
+## [📖 Lore](lore.md)
+
+## [❓ FAQ](faq.md)

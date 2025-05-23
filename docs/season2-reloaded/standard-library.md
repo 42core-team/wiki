@@ -21,9 +21,10 @@ Pass your team name as the first parameter.
 ### ❌ `void ft_close_con();`
 Closes the connection to the game server.
 
-### 🔄 `void ft_loop(void (*ft_init_func)(void *ptr), void (*ft_user_loop)(void *ptr), void *ptr);`
+### 🔄 `int ft_loop(void (*ft_init_func)(void *ptr), void (*ft_user_loop)(void *ptr), void *ptr);`
 Registers the user loop function, which is called approximately 50 times per second.  
 This is where you can place your bot's main logic.
+Returns 1 when the bot won and 0 when it lost.
 
 
 ## 🐞📜 Debugging and Logging
@@ -147,31 +148,37 @@ Calculates the distance between `t_obj *obj1` and `t_obj *obj2` on the playing f
 ## 🚶‍♂️ Travel functions
 > Functions to make units move
 
-### 🚶‍♂️ `void ft_travel_to_id(unsigned long id, unsigned long x, unsigned long y);`
+### 🚶‍♂️ `int ft_travel_to_id(unsigned long id, unsigned long x, unsigned long y);`
 Commands a unit to travel to a specific coordinate based on the unit’s ID.
+Returns 1 on error.
 
 Takes:
 - `id`: Unit's ID.
 - `x`: Destination X-coordinate.
 - `y`: Destination Y-coordinate.
 
-### 🚶‍♀️ `void ft_travel_to(t_obj *unit, unsigned long x, unsigned long y);`
+### 🚶‍♀️ `int ft_travel_to(t_obj *unit, unsigned long x, unsigned long y);`
 Commands a unit to travel to a specific coordinate based on a unit pointer.
 X and Y are a direction vector.
+Returns 1 on error.
 
-### ↔️ `void ft_travel_dir_id(unsigned long id, long x, long y);`
+### ↔️ `int ft_travel_dir_id(unsigned long id, long x, long y);`
 Commands a unit to move in a specific direction based on the unit’s ID.
 X and Y are a direction vector.
+Returns 1 on error.
 
-### ↔️ `void ft_travel_dir(t_obj *unit, long x, long y);`
+### ↔️ `int ft_travel_dir(t_obj *unit, long x, long y);`
 Commands a unit to move in a specific direction based on a unit pointer.
 X and Y are a direction vector.
+Returns 1 on error.
 
-### 🎯 `void ft_travel_to_id_obj(unsigned long id, t_obj *target);`
+### 🎯 `int ft_travel_to_id_obj(unsigned long id, t_obj *target);`
 Commands a unit to travel to another object based on the unit’s ID.
+Returns 1 on error.
 
-### 🎯 `void ft_travel_to_obj(t_obj *unit, t_obj *target);`
+### 🎯 `int ft_travel_to_obj(t_obj *unit, t_obj *target);`
 Commands a unit to travel to another object based on a unit pointer.
+Returns 1 on error.
 
 ## 🛠️ Unit creation/spawning
 > Functions to buy/spawn new units
@@ -182,14 +189,17 @@ Creates a unit of a specific type based on its type ID. When created, new units 
 ## ⚔️ Attack functions
 > Functions to handle the attacking of objects like enemy units, resources and core
 
-### ⚔️ `void ft_attack_id(unsigned long attacker_id, unsigned long target_id);`
+### ⚔️ `int ft_attack_id(unsigned long attacker_id, unsigned long target_id);`
 Commands a unit to attack another unit using their IDs.
+Returns 1 on error.
 
-### ⚔️ `void ft_attack(t_obj *attacker, t_obj *target);`
+### ⚔️ `int ft_attack(t_obj *attacker, t_obj *target);`
 Commands a unit to attack another unit using pointers to the units.
+Returns 1 on error.
 
-### ⚔️ `void ft_travel_attack(t_obj *attacker_unit, t_obj *attack_obj);`
+### ⚔️ `int ft_travel_attack(t_obj *attacker_unit, t_obj *attack_obj);`
 Commands a unit to travel to a target and attack it. Equivalent to calling `ft_travel_to_obj` and `ft_attack` sequentially.
+Returns 1 on error.
 
 # 📊 Data Types
 

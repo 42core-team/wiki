@@ -1,6 +1,19 @@
-# **🌌 Units**
+# Configs
 
-## Warrior
+## General
+
+- Map Height: 10000,
+- Map Width: 10000,
+- Idle Income: 1,
+- Idle income Timeout: 3000,
+- Core HP: 50000,
+- Resource Count: 5,
+- Resource Spawn Timeout: 0,
+- Unit Size: 200,
+
+## **🌌 Units**
+
+### Warrior
 
 - Type Id: 1
 - Cost: 800
@@ -12,7 +25,7 @@
 - Min Range: 0
 - Speed: 35
 
-## Worker
+### Worker
 
 - Type Id: 2
 - Cost: 550
@@ -24,7 +37,7 @@
 - Min Range: 0
 - Speed: 40
 
-## Tank
+### Tank
 
 - Type Id: 3
 - Cost: 1000
@@ -36,7 +49,7 @@
 - Min Range: 0
 - Speed: 22
 
-## Archer
+### Archer
 
 - Type Id: 4
 - Cost: 850
@@ -48,7 +61,7 @@
 - Min Range: 0
 - Speed: 7
 
-## Healer
+### Healer
 
 - Type Id: 5
 - Cost: 650

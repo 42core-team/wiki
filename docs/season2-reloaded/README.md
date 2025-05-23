@@ -120,7 +120,7 @@ The User Loop is called every game tick, so it's the perfect place to put your l
 
 ## [📚 Standard Library](standard-library.md)
 
-## [👥 Unit Configs](unit-configs.md)
+## [👥 Configs](configs.md)
 
 ## [📖 Lore](lore.md)
 

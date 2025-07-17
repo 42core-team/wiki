@@ -24,3 +24,9 @@ patches:
       - op: replace
         path: /spec/rules/0/host
         value: wiki.coregame.de
+      - op: replace
+        path: /spec/tls/0/hosts/0
+        value: wiki.coregame.de
+      - op: replace
+        path: /spec/tls/0/secretName
+        value: wiki-coregame-de-tls

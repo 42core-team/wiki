@@ -3,16 +3,16 @@ kind: Ingress
 metadata:
   name: public-wiki-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: nginx
   tls:
   - hosts:
-    - example.com # will be patched in overlays
-    secretName: public-wiki-tls
+    - PLACEHOLDER_HOST # will be patched in overlays
+    secretName: PLACEHOLDER_TLS_SECRET # will be patched in overlays
   rules:
-  - host: example.com # will be patched in overlays
+  - host: PLACEHOLDER_HOST # will be patched in overlays
     http:
       paths:
       - path: /

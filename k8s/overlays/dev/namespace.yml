@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: wiki-dev
+  labels:
+    app.kubernetes.io/name: public-wiki
+    app.kubernetes.io/environment: dev

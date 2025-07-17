@@ -1,24 +1,29 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: wiki-dev
+
 namePrefix: dev-
-namespace: wiki
+nameSuffix: -dev
+
 labels:
   - pairs:
-      app: public-wiki
-      env: dev
+      app.kubernetes.io/environment: dev
+      app.kubernetes.io/instance: dev
 
 resources:
+  - namespace.yml
   - ../../base
 
+replicas:
+  - name: public-wiki
+    count: 1
+
+images:
+  - name: ghcr.io/42core-team/wiki
+    newTag: dev
+
 patches:
-  - target:
-      kind: Deployment
-      name: public-wiki
-    patch: |-
-      - op: replace
-        path: /spec/replicas
-        value: 1
-      - op: replace
-        path: /spec/template/spec/containers/0/image
-        value: ghcr.io/42core-team/wiki:dev
   - target:
       kind: Ingress
       name: public-wiki-ingress

@@ -2,18 +2,24 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: public-wiki
+  labels:
+    app.kubernetes.io/name: public-wiki
+    app.kubernetes.io/component: web
 spec:
-  replicas: 1 # default, will be overridden by overlays
+  replicas: 1
   selector:
     matchLabels:
-      app: public-wiki
+      app.kubernetes.io/name: public-wiki
+      app.kubernetes.io/component: web
   template:
     metadata:
       labels:
-        app: public-wiki
+        app.kubernetes.io/name: public-wiki
+        app.kubernetes.io/component: web
     spec:
       containers:
       - name: public-wiki
-        image: ghcr.io/42core-team/wiki:dev # will be replaced by overlays
+        image: ghcr.io/42core-team/wiki:latest
         ports:
         - containerPort: 3000
+          name: http

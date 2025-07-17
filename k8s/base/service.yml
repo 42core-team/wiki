@@ -2,10 +2,16 @@ apiVersion: v1
 kind: Service
 metadata:
   name: public-wiki
+  labels:
+    app.kubernetes.io/name: public-wiki
+    app.kubernetes.io/component: web
 spec:
+  type: ClusterIP
   selector:
-    app: public-wiki
+    app.kubernetes.io/name: public-wiki
+    app.kubernetes.io/component: web
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 3000
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http

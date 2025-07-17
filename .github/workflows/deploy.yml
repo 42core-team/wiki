@@ -82,19 +82,37 @@ jobs:
           kubectl cluster-info
 
       - name: Deploy to Kubernetes
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+          SHORT_SHA: ${{ github.sha }}
         run: |
-          if [ "${{ github.ref_name }}" = "main" ]; then
+          if [ "$BRANCH_NAME" = "main" ]; then
             OVERLAY=main
-          elif [ "${{ github.ref_name }}" = "dev" ]; then
+            IMAGE_TAG="main"
+          elif [ "$BRANCH_NAME" = "dev" ]; then
             OVERLAY=dev
+            IMAGE_TAG="dev"
           else
             echo "Branch is not main or dev, skipping deployment."
             exit 1
           fi
+
           cd k8s/overlays/$OVERLAY
-          if [ "$OVERLAY" = "main" ]; then
-            ENV_LABEL="main"
-          else
-            ENV_LABEL="dev"
-          fi
+
+          # Create a temporary kustomization that uses the exact image from this build
+          cp kustomization.yml kustomization.yml.bak
+
+          # Update the image tag to use the branch-specific tag
+          sed -i "s/newTag: .*/newTag: $IMAGE_TAG/" kustomization.yml
+
+          echo "Deploying to $OVERLAY environment..."
+          echo "Using image tag: $IMAGE_TAG"
+
+          # Build and apply
           kustomize build . | kubectl apply -f -
+
+          # Verify deployment
+          kubectl rollout status deployment/$(kubectl get deployment -n wiki-$OVERLAY -o name | head -1 | cut -d'/' -f2) -n wiki-$OVERLAY --timeout=300s
+
+          # Restore original kustomization
+          mv kustomization.yml.bak kustomization.yml

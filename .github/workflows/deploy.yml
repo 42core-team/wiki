@@ -11,7 +11,9 @@ env:
 
 jobs:
   build-and-push:
-    runs-on: self-hosted
+    runs-on:
+      - self-hosted
+      - x64
     permissions:
       contents: read
       packages: write
@@ -51,7 +53,9 @@ jobs:
           tags: ${{ steps.docker_tags.outputs.tags }}
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on:
+      - ubuntu-latest
+      - x64
     needs: build-and-push
 
     steps:

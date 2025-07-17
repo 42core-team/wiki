@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: public-wiki
   namespace: wiki
-  labels:
-    app: public-wiki
 spec:
   selector:
     app: public-wiki

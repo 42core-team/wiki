@@ -3,10 +3,8 @@ kind: Deployment
 metadata:
   name: public-wiki
   namespace: wiki
-  labels:
-    app: public-wiki
 spec:
-  replicas: 3 # default, will be overridden by overlays
+  replicas: 1 # default, will be overridden by overlays
   selector:
     matchLabels:
       app: public-wiki

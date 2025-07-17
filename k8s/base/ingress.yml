@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   name: public-wiki-ingress
   namespace: wiki
-  labels:
-    app: public-wiki
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
@@ -16,6 +14,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: public-wiki
+            name: PLACEHOLDER_SERVICE
             port:
               number: 80

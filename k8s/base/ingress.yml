@@ -4,7 +4,13 @@ metadata:
   name: public-wiki-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  tls:
+  - hosts:
+    - example.com # will be patched in overlays
+    secretName: public-wiki-tls
   rules:
   - host: example.com # will be patched in overlays
     http:

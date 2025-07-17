@@ -54,7 +54,7 @@ jobs:
 
   deploy:
     runs-on:
-      - ubuntu-latest
+      - self-hosted
       - x64
     needs: build-and-push
 

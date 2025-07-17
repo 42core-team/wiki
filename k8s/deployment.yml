@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: public-wiki
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: public-wiki
+  template:
+    metadata:
+      labels:
+        app: public-wiki
+    spec:
+      containers:
+      - name: public-wiki
+        image: IMAGE_TAG
+        ports:
+        - containerPort: 3000

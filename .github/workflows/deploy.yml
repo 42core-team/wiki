@@ -20,6 +20,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up Docker tags
+        id: docker_tags
+        run: |
+          BRANCH="${GITHUB_REF_NAME}"
+          SHORT_SHA=$(echo "${GITHUB_SHA}" | cut -c1-7)
+          IMAGE_BASE="ghcr.io/${{ github.repository }}"
+          TAGS=""
+          if [ "$BRANCH" = "main" ]; then
+            TAGS+="${IMAGE_BASE}:main,${IMAGE_BASE}:latest,${IMAGE_BASE}:main-${SHORT_SHA}"
+          elif [ "$BRANCH" = "dev" ]; then
+            TAGS+="${IMAGE_BASE}:dev,${IMAGE_BASE}:dev-${SHORT_SHA}"
+          else
+            TAGS+="${IMAGE_BASE}:${BRANCH},${IMAGE_BASE}:${BRANCH}-${SHORT_SHA}"
+          fi
+          echo "tags=$TAGS" >> $GITHUB_OUTPUT
+
       - name: Log in to the Container registry
         uses: docker/login-action@v2
         with:
@@ -32,7 +48,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.IMAGE_NAME }}
+          tags: ${{ steps.docker_tags.outputs.tags }}
 
   deploy:
     runs-on: ubuntu-latest

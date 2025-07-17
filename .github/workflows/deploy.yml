@@ -55,7 +55,6 @@ jobs:
   deploy:
     runs-on:
       - self-hosted
-      - x64
     needs: build-and-push
 
     steps:

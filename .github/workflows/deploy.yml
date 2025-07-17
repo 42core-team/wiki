@@ -11,7 +11,7 @@ env:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
       packages: write
@@ -42,11 +42,28 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up kubectl
-        uses: azure/k8s-set-context@v3
-        with:
-          method: kubeconfig
-          kubeconfig: ${{ secrets.KUBE_CONFIG_DATA }}
+      - name: Set up Kubeconfig
+        env:
+          KUBECONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+        run: |
+          mkdir -p ~/.kube
+
+          # Decode and write kubeconfig
+          echo "${KUBECONFIG_DATA}" | base64 -d > ~/.kube/config
+
+          # Verify kubeconfig was decoded properly
+          if [ ! -s ~/.kube/config ]; then
+            echo "❌ ERROR: Kubeconfig file is empty after decoding!"
+            echo "Please verify that KUBECONFIG_DATA secret contains valid base64 encoded kubeconfig"
+            exit 1
+          fi
+
+          # Set proper permissions
+          chmod 600 ~/.kube/config
+
+          # Verify connection
+          echo "Testing connection to Kubernetes cluster..."
+          kubectl cluster-info
 
       - name: Deploy to Kubernetes
         run: |

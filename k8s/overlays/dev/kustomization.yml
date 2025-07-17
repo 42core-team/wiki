@@ -1,8 +1,5 @@
 resources:
-  - ../../deployment.yml
-  - ../../service.yml
-  - ../../ingress.yml
-  - ../../namespace.yml
+  - ../base
 
 namespace: wiki
 

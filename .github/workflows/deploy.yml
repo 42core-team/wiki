@@ -76,4 +76,4 @@ jobs:
             exit 1
           fi
           cd k8s/overlays/$OVERLAY
-          kustomize build . | kubectl apply -f -
+          kustomize build . | kubectl apply --prune -l app=public-wiki -f -

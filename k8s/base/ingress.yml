@@ -2,14 +2,17 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: public-wiki-ingress
-  namespace: wiki
-  labels:
-    app: public-wiki
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - PLACEHOLDER_HOST # will be patched in overlays
+    secretName: PLACEHOLDER_TLS_SECRET # will be patched in overlays
   rules:
-  - host: PLACEHOLDER_HOST
+  - host: PLACEHOLDER_HOST # will be patched in overlays
     http:
       paths:
       - path: /

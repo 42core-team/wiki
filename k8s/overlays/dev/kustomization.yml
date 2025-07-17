@@ -1,7 +1,12 @@
+namePrefix: dev-
+namespace: wiki
+labels:
+  - pairs:
+      app: public-wiki
+      env: dev
+
 resources:
   - ../../base
-
-namespace: wiki
 
 patches:
   - target:
@@ -11,6 +16,9 @@ patches:
       - op: replace
         path: /spec/replicas
         value: 1
+      - op: replace
+        path: /spec/template/spec/containers/0/image
+        value: ghcr.io/42core-team/wiki:dev
   - target:
       kind: Ingress
       name: public-wiki-ingress
@@ -18,8 +26,9 @@ patches:
       - op: replace
         path: /spec/rules/0/host
         value: dev.wiki.coregame.de
-
-images:
-  - name: IMAGE_TAG
-    newName: ghcr.io/42core-team/wiki
-    newTag: dev
+      - op: replace
+        path: /spec/tls/0/hosts/0
+        value: dev.wiki.coregame.de
+      - op: replace
+        path: /spec/tls/0/secretName
+        value: dev-wiki-coregame-de-tls

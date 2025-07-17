@@ -2,11 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: public-wiki
-  namespace: wiki
-  labels:
-    app: public-wiki
 spec:
-  replicas: 3 # default, will be overridden by overlays
+  replicas: 1 # default, will be overridden by overlays
   selector:
     matchLabels:
       app: public-wiki
@@ -17,6 +14,6 @@ spec:
     spec:
       containers:
       - name: public-wiki
-        image: IMAGE_TAG # will be replaced by kustomize
+        image: ghcr.io/42core-team/wiki:dev # will be replaced by overlays
         ports:
         - containerPort: 3000

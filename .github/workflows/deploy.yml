@@ -97,4 +97,4 @@ jobs:
           else
             ENV_LABEL="dev"
           fi
-          kustomize build . | kubectl apply --prune -l app=public-wiki --prune-allowlist=core/v1/Namespace --prune-allowlist=apps/v1/Deployment --prune-allowlist=core/v1/Service --prune-allowlist=networking.k8s.io/v1/Ingress -f - --selector=env=$ENV_LABEL
+          kustomize build . | kubectl apply -f

@@ -2,11 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: public-wiki-ingress
+  namespace: wiki
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - host: INGRESS_HOST
+  - host: PLACEHOLDER_HOST
     http:
       paths:
       - path: /

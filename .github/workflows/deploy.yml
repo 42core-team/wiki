@@ -68,15 +68,12 @@ jobs:
       - name: Deploy to Kubernetes
         run: |
           if [ "${{ github.ref_name }}" = "main" ]; then
-            INGRESS_HOST="wiki.coregame.de"
+            OVERLAY=main
           elif [ "${{ github.ref_name }}" = "dev" ]; then
-            INGRESS_HOST="dev.wiki.coregame.de"
+            OVERLAY=dev
           else
-            echo "Branch is not main or dev, skipping ingress update."
+            echo "Branch is not main or dev, skipping deployment."
             exit 1
           fi
-          sed -i "s|IMAGE_TAG|${{ env.IMAGE_NAME }}|g" k8s/deployment.yml
-          sed -i "s|INGRESS_HOST|$INGRESS_HOST|g" k8s/ingress.yml
-          kubectl apply -f k8s/deployment.yml
-          kubectl apply -f k8s/service.yml
-          kubectl apply -f k8s/ingress.yml
+          cd k8s/overlays/$OVERLAY
+          kustomize build . | kubectl apply -f -

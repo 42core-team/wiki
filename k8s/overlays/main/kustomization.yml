@@ -1,8 +1,9 @@
 namePrefix: main-
 namespace: wiki
-commonLabels:
-  app: public-wiki
-  env: main
+labels:
+  - pairs:
+      app: public-wiki
+      env: main
 resources:
   - ../../base
 patches:

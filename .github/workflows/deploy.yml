@@ -97,4 +97,4 @@ jobs:
           else
             ENV_LABEL="dev"
           fi
-          kustomize build . | kubectl apply -f
+          kustomize build . | kubectl apply -f -

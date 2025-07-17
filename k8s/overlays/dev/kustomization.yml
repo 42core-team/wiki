@@ -1,8 +1,9 @@
 namePrefix: dev-
 namespace: wiki
-commonLabels:
-  app: public-wiki
-  env: dev
+labels:
+  - pairs:
+      app: public-wiki
+      env: dev
 
 resources:
   - ../../base

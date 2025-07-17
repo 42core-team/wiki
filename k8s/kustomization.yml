@@ -1,0 +1,10 @@
+resources:
+  - namespace.yml
+  - deployment.yml
+  - service.yml
+  - ingress.yml
+images:
+  - name: public-wiki
+    newName: IMAGE_TAG
+
+namespace: wiki

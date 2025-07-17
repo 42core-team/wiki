@@ -1,0 +1,25 @@
+resources:
+  - ../../base
+
+namespace: wiki
+
+patches:
+  - target:
+      kind: Deployment
+      name: public-wiki
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3
+  - target:
+      kind: Ingress
+      name: public-wiki-ingress
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: wiki.coregame.de
+
+images:
+  - name: IMAGE_TAG
+    newName: ghcr.io/42core-team/wiki
+    newTag: main

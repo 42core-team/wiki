@@ -53,6 +53,8 @@ It will be linked on the page of your team on the Core Website.
 
 Basically it's just typing `make devcontainer` inside your cloned repo inside a terminal. But for more information check out the teams repo README.
 
+You must set the name of your bot in the main function of src/main.c to your intra teams team leader intra name as well.
+
 ### 4. Start Developing 💻
 
 - Navigate to the `src/` folder inside the container (Every .c file in there should get compiled).

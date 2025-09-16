@@ -1,3 +1,5 @@
+> # THIS WAS ARCHIVED because we shifted towards a monorepo architecture. The current wiki is in the /wiki folder of the monorepo repository.
+
 # 🏠 The Art of CORE
 
 ## Welcome to the Official CORE Documentation 📚
